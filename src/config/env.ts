@@ -3,15 +3,15 @@
  * Server-only secrets should live in a separate module with "server-only".
  */
 
-const appName = process.env.NEXT_PUBLIC_APP_NAME ?? "Aetheris";
+const appName = process.env.NEXT_PUBLIC_APP_NAME ?? "AmanNex";
 
 export const publicEnv = {
   NEXT_PUBLIC_APP_NAME: appName,
   NEXT_PUBLIC_APP_NAME_FULL:
-    process.env.NEXT_PUBLIC_APP_NAME_FULL ?? `${appName} Platform`,
+    process.env.NEXT_PUBLIC_APP_NAME_FULL ?? `${appName} SaaS App`,
   NEXT_PUBLIC_APP_DESCRIPTION:
     process.env.NEXT_PUBLIC_APP_DESCRIPTION ??
-    "Enterprise-grade modular SaaS frontend system",
+    "Multi-tenant SaaS workspace with billing, teams, projects, and admin tooling.",
   NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   /** Path after locale (e.g. /auth/login, /dashboard) */
   NEXT_PUBLIC_LANDING_PATH: process.env.NEXT_PUBLIC_LANDING_PATH ?? "/auth/login",

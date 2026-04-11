@@ -14,6 +14,7 @@ export default async function SignupPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("auth");
+  const tc = await getTranslations("common");
 
   return (
     <div className="w-full space-y-6 sm:space-y-8">
@@ -22,7 +23,7 @@ export default async function SignupPage({
           {appConfig.name.charAt(0)}
         </div>
         <h1 className="text-balance text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-          {appConfig.nameFull}
+          {tc("product_title")}
         </h1>
         <p className="max-w-sm text-pretty text-sm text-muted-foreground">{t("signup_tagline")}</p>
       </div>

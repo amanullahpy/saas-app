@@ -1,5 +1,6 @@
 "use client";
 
+import { appConfig } from "@/config/app.config";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Bot, User } from "lucide-react";
@@ -36,7 +37,7 @@ export function ChatMessage({ role, content }: ChatMessageProps) {
       
       <div className="flex-1 space-y-2 overflow-hidden">
         <p className="text-sm font-semibold text-foreground">
-          {isAssistant ? "Aetheris AI" : "You"}
+          {isAssistant ? `${appConfig.name} AI` : "You"}
         </p>
         <div className="text-sm leading-relaxed text-foreground/90 whitespace-pre-wrap">
           {content}

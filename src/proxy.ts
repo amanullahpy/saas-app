@@ -1,13 +1,13 @@
 import createMiddleware from "next-intl/middleware";
-import type { NextRequest } from "next/server";
 import { routing } from "./i18n/routing";
 
-const handleI18nRouting = createMiddleware(routing);
+const intlMiddleware = createMiddleware(routing);
 
-/** Next.js 16+ convention: named `proxy` export (Node runtime). */
-export function proxy(request: NextRequest) {
-  return handleI18nRouting(request);
-}
+/** Required by Next.js Node middleware: `default` must be the callable adapter. */
+export default intlMiddleware;
+
+/** Same handler under the name Next looks up: `middlewareModule.proxy` */
+export const proxy = intlMiddleware;
 
 export const config = {
   matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],

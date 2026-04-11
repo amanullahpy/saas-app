@@ -1,5 +1,6 @@
 import { MainShell } from "@/ui/layout/MainShell";
 import { ChatInterface } from "@/modules/chat/components/ChatInterface";
+import { appConfig } from "@/config/app.config";
 import { setRequestLocale } from "next-intl/server";
 
 export default async function ChatPage({
@@ -18,7 +19,7 @@ export default async function ChatPage({
             AI Assistant
           </h2>
           <p className="text-muted-foreground mt-1 text-sm">
-            Powered by Aetheris AI. Real-time streaming and code block support.
+            Powered by {appConfig.name} AI — real-time streaming and code block support.
           </p>
         </div>
         
