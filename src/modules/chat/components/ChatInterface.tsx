@@ -1,13 +1,12 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { useTranslations } from "next-intl";
 import { Send, Plus, Search, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ChatMessage } from "./ChatMessage";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { StatsGrid } from "../../dashboard/components/StatsGrid"; // Testing cross-module
+import { appConfig } from "@/config/app.config";
 
 interface Message {
   id: string;
@@ -20,7 +19,7 @@ export function ChatInterface() {
     {
       id: "1",
       role: "assistant",
-      content: "Hello! I'm Aetheris AI. How can I help you manage your SaaS dashboard today?",
+      content: `Hello! I'm ${appConfig.name} AI. How can I help you manage your SaaS dashboard today?`,
     },
   ]);
   const [input, setInput] = useState("");
@@ -135,7 +134,7 @@ export function ChatInterface() {
           </Button>
         </div>
         <p className="text-[10px] text-center text-muted-foreground mt-3">
-          Aetheris AI can make mistakes. Check important info.
+          {appConfig.name} AI can make mistakes. Check important info.
         </p>
       </div>
     </div>

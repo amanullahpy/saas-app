@@ -5,7 +5,11 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { StoreProvider } from "@/store/StoreProvider";
+import { AuthSessionSync } from "@/modules/auth/components/AuthSessionSync";
 import { ThemeProvider } from "@/theme/ThemeProvider";
+import { appConfig } from "@/config/app.config";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "@/components/ui/sonner";
 import "../globals.css";
 
 const inter = Inter({
@@ -19,11 +23,15 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aetheris SaaS Platform",
-  description: "Enterprise-grade modular SaaS frontend system",
+  title: {
+    default: appConfig.nameFull,
+    template: `%s | ${appConfig.name}`,
+  },
+  description: appConfig.description,
   icons: {
     icon: "/favicon.ico",
   },
+  metadataBase: new URL(appConfig.siteUrl),
 };
 
 export function generateStaticParams() {
@@ -55,10 +63,14 @@ export default async function RootLayout({
     >
       <body className="min-h-screen bg-background text-foreground font-sans" suppressHydrationWarning>
         <StoreProvider>
+          <AuthSessionSync />
           <ThemeProvider>
-            <NextIntlClientProvider locale={locale} messages={messages}>
-              {children}
-            </NextIntlClientProvider>
+            <TooltipProvider>
+              <NextIntlClientProvider locale={locale} messages={messages}>
+                {children}
+                <Toaster />
+              </NextIntlClientProvider>
+            </TooltipProvider>
           </ThemeProvider>
         </StoreProvider>
       </body>

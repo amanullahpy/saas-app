@@ -12,11 +12,11 @@ export function MainShell({ children }: { children: ReactNode }) {
 
   return (
     <SidebarProvider defaultOpen={true}>
-      <div className="flex h-screen w-full overflow-hidden bg-background">
+      <div className="flex min-h-svh w-full overflow-hidden bg-background">
         <AppSidebar />
-        <SidebarInset className="flex flex-col flex-1 overflow-hidden">
+        <SidebarInset className="flex min-h-0 flex-1 flex-col overflow-hidden">
           <AppNavbar />
-          <main className="flex-1 overflow-y-auto p-6 md:p-8 bg-muted/5">
+          <main className="flex-1 overflow-y-auto bg-muted/5 p-4 sm:p-6 md:p-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={pathname}

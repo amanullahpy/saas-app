@@ -24,7 +24,7 @@ export function OverviewChart() {
       <CardHeader>
         <CardTitle className="text-sm font-medium">Overview</CardTitle>
       </CardHeader>
-      <CardContent className="pl-2">
+      <CardContent className="ps-2">
         <div className="h-[350px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data}>

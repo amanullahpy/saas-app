@@ -9,7 +9,158 @@
     "security": "Security",
     "logout": "Logout",
     "search": "Search...",
-    "notifications": "Notifications"
+    "notifications": "Notifications",
+    "language": "Language",
+    "appearance": "Appearance",
+    "theme_mode": "Theme mode",
+    "theme_light": "Light",
+    "theme_dark": "Dark",
+    "theme_system": "System",
+    "toggle_dark": "Turn on dark mode",
+    "toggle_light": "Turn on light mode",
+    "nav_section_overview": "Overview",
+    "nav_section_work": "Work",
+    "nav_section_org": "Organization",
+    "nav_section_tenant_admin": "Tenant admin",
+    "nav_section_platform_admin": "Platform admin",
+    "nav_section_account": "Account",
+    "nav_section_administration": "Administration",
+    "admin_console_badge": "Admin console",
+    "back_to_member_app": "Back to member app",
+    "open_admin_console": "Open admin console",
+    "workspace": "Workspace",
+    "projects": "Projects",
+    "team": "Team",
+    "documents": "Documents",
+    "help": "Help Center",
+    "tenant_members": "Members & roles",
+    "tenant_audit": "Tenant audit log",
+    "tenant_billing": "Tenant billing",
+    "admin": "Admin home",
+    "admin_users": "All users",
+    "admin_tenants": "Tenants",
+    "admin_audit": "Platform audit",
+    "admin_api_keys": "API keys",
+    "admin_reports": "Reports"
+  },
+  "pages": {
+    "workspace": {
+      "title": "Workspace",
+      "description": "Your active tenant context, usage, and quick links. Multi-tenant controls apply per organization.",
+      "card_title": "Current workspace",
+      "card_description": "Tenant-scoped data and permissions",
+      "card_body": "When you connect a backend, this view can show tenant name, plan, seat usage, and SSO status. Admins manage members under Tenant admin."
+    },
+    "projects": {
+      "title": "Projects",
+      "description": "Track initiatives across your workspace with optional tenant isolation.",
+      "card_title": "Project list",
+      "card_description": "Placeholder for boards and milestones",
+      "card_body": "Wire this to your API to list projects filtered by tenant and role."
+    },
+    "team": {
+      "title": "Team",
+      "description": "People in your workspace (non-admin view).",
+      "card_title": "Directory",
+      "card_description": "Members you collaborate with",
+      "card_body": "Standard users see teammates; invite flows can be added with your auth provider."
+    },
+    "documents": {
+      "title": "Documents",
+      "description": "Files shared within the tenant.",
+      "card_title": "Library",
+      "card_description": "Storage placeholder",
+      "card_body": "Connect object storage or a CMS when ready."
+    },
+    "notifications": {
+      "title": "Notifications",
+      "description": "Alerts across apps and tenants you belong to.",
+      "card_title": "Inbox",
+      "card_description": "Unread and archived",
+      "card_body": "Hook to websockets or polling for real-time updates."
+    },
+    "help": {
+      "title": "Help center",
+      "description": "Guides and support for both end users and admins.",
+      "card_title": "Resources",
+      "card_description": "Docs and contact",
+      "card_body": "Replace with your knowledge base or Intercom embed."
+    },
+    "tenant_members": {
+      "title": "Members & roles",
+      "description": "Invite users and assign roles within this tenant (organization admin).",
+      "card_title": "Access control",
+      "card_description": "RBAC per tenant",
+      "card_body": "Map roles to Supabase or your IdP; enforce least privilege for production."
+    },
+    "tenant_audit": {
+      "title": "Tenant audit log",
+      "description": "Security-relevant events for this organization only.",
+      "card_title": "Events",
+      "card_description": "Who did what, when",
+      "card_body": "Export to SIEM or store immutably for compliance."
+    },
+    "tenant_billing": {
+      "title": "Tenant billing",
+      "description": "Plans, invoices, and payment methods for this tenant.",
+      "card_title": "Subscription",
+      "card_description": "Stripe Customer portal placeholder",
+      "card_body": "Sync Customer ID per tenant for correct invoicing."
+    },
+    "admin": {
+      "title": "Platform administration",
+      "description": "Cross-tenant operations — use only for super-admins.",
+      "card_title": "Control plane",
+      "card_description": "Global overview",
+      "card_body": "Protect these routes with server-side checks and separate roles in production."
+    },
+    "admin_users": {
+      "title": "All users",
+      "description": "Every user across all tenants (platform scope).",
+      "card_title": "User directory",
+      "card_description": "Search and suspend",
+      "card_body": "Paginate and filter; never expose PII without audit logging."
+    },
+    "admin_tenants": {
+      "title": "Tenants",
+      "description": "Create, suspend, or configure organizations (workspaces).",
+      "card_title": "Tenant registry",
+      "card_description": "Multi-tenant backbone",
+      "card_body": "Each tenant id should map to isolated data stores or schemas."
+    },
+    "admin_audit": {
+      "title": "Platform audit",
+      "description": "Immutable log of platform-level actions.",
+      "card_title": "Compliance trail",
+      "card_description": "Cross-tenant events",
+      "card_body": "Retention policies differ from tenant-level audit logs."
+    },
+    "admin_api_keys": {
+      "title": "API keys",
+      "description": "Service accounts and integration keys for the platform API.",
+      "card_title": "Secrets",
+      "card_description": "Rotate regularly",
+      "card_body": "Store hashes only; show plaintext once at creation."
+    },
+    "admin_reports": {
+      "title": "Reports",
+      "description": "Exports and scheduled analytics across tenants.",
+      "card_title": "Insights",
+      "card_description": "BI placeholder",
+      "card_body": "Connect BigQuery or Metabase when datasets are ready."
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Manage your account settings and preferences.",
+    "security": {
+      "title": "Security",
+      "description": "Protect your account with additional verification.",
+      "two_factor_title": "Two-factor authentication",
+      "two_factor_description": "Add a second step after your password when you sign in.",
+      "two_factor_hint": "2FA will be available when your workspace enables identity providers.",
+      "two_factor_enable": "Enable (soon)"
+    }
   },
   "dashboard": {
     "title": "Welcome Back",
@@ -24,10 +175,46 @@
   "auth": {
     "login": "Login",
     "signup": "Sign Up",
-    "forgot_password": "Forgot Password?",
+    "signup_submit": "Create account",
+    "name": "Full name",
+    "confirm_password": "Confirm password",
+    "forgot_password": "Forgot password?",
     "reset_password": "Reset Password",
     "email": "Email",
     "password": "Password",
-    "submit": "Continue"
+    "submit": "Continue",
+    "login_tagline": "Enter your credentials to access your dashboard",
+    "login_description": "Sign in to your account to continue",
+    "signup_tagline": "Create your account to get started",
+    "signup_description": "Fill in the fields below to register",
+    "no_account": "Don't have an account?",
+    "have_account": "Already have an account?",
+    "remember_me": "Remember me on this device",
+    "continue_google": "Continue with Google",
+    "divider_or": "Or",
+    "forgot_title": "Forgot password",
+    "forgot_description": "Enter your email and we'll send reset instructions when email is connected.",
+    "forgot_card_title": "Reset link",
+    "forgot_card_description": "We'll email you a link to choose a new password.",
+    "send_reset_link": "Send reset link",
+    "reset_title": "Set a new password",
+    "reset_description": "Choose a strong password you haven't used before.",
+    "reset_card_title": "New password",
+    "reset_card_description": "Enter and confirm your new password.",
+    "reset_password_submit": "Update password",
+    "reset_invalid_title": "Invalid or missing link",
+    "reset_invalid_description": "Ask for a new reset link from the forgot password page, or open the link from your email again.",
+    "back_to_login": "Back to login",
+    "mock_hint": "Mock mode: demo@example.com / password123 (or sign up — stored locally)",
+    "error_invalid_credentials": "Email or password is incorrect.",
+    "error_email_exists": "An account with this email already exists.",
+    "error_not_implemented": "HTTP auth is not wired yet. Set NEXT_PUBLIC_AUTH_DRIVER=mock or implement http.provider.ts.",
+    "error_generic": "Something went wrong. Try again.",
+    "toast_login_success": "Signed in successfully.",
+    "toast_admin_only": "That area is for administrators only.",
+    "toast_signup_success": "Account created. Welcome aboard!",
+    "toast_forgot_success": "If that email exists, we sent reset instructions.",
+    "toast_reset_success": "Password updated. You can sign in with the new password.",
+    "toast_reset_no_token": "Open this page from the email link that includes a reset token."
   }
 }

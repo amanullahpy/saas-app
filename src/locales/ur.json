@@ -9,7 +9,158 @@
     "security": "سیکیورٹی",
     "logout": "لاگ آؤٹ",
     "search": "تلاش کریں...",
-    "notifications": "اطلاعات"
+    "notifications": "اطلاعات",
+    "language": "زبان",
+    "appearance": "ظاہری شکل",
+    "theme_mode": "تھیم موڈ",
+    "theme_light": "روشن",
+    "theme_dark": "تاریک",
+    "theme_system": "سسٹم",
+    "toggle_dark": "تاریک موڈ آن کریں",
+    "toggle_light": "روشن موڈ آن کریں",
+    "nav_section_overview": "جائزہ",
+    "nav_section_work": "کام",
+    "nav_section_org": "تنظیم",
+    "nav_section_tenant_admin": "ٹیننٹ ایڈمن",
+    "nav_section_platform_admin": "پلیٹ فارم ایڈمن",
+    "nav_section_account": "اکاؤنٹ",
+    "nav_section_administration": "انتظامیہ",
+    "admin_console_badge": "ایڈمن کنسول",
+    "back_to_member_app": "ممبر ایپ پر واپس",
+    "open_admin_console": "ایڈمن کنسول کھولیں",
+    "workspace": "ورک اسپیس",
+    "projects": "منصوبے",
+    "team": "ٹیم",
+    "documents": "دستاویزات",
+    "help": "مدد",
+    "tenant_members": "اراکین اور کردار",
+    "tenant_audit": "ٹیننٹ آڈٹ",
+    "tenant_billing": "ٹیننٹ بلنگ",
+    "admin": "ایڈمن ہوم",
+    "admin_users": "تمام صارفین",
+    "admin_tenants": "ٹیننٹس",
+    "admin_audit": "پلیٹ فارم آڈٹ",
+    "admin_api_keys": "API کلیدیں",
+    "admin_reports": "رپورٹس"
+  },
+  "pages": {
+    "workspace": {
+      "title": "ورک اسپیس",
+      "description": "فعال ٹیننٹ، استعمال، اور تیز لنکس۔",
+      "card_title": "موجودہ ورک اسپیس",
+      "card_description": "ٹیننٹ کے مطابق ڈیٹا",
+      "card_body": "بیک اینڈ منسلک ہونے پر منصوبہ، نشستیں، اور SSO یہاں دکھائی دے سکتے ہیں۔"
+    },
+    "projects": {
+      "title": "منصوبے",
+      "description": "ورک اسپیس میں منصوبے۔",
+      "card_title": "فہرست",
+      "card_description": "بورڈز اور سنگ میل",
+      "card_body": "API سے منصوبے لوڈ کریں۔"
+    },
+    "team": {
+      "title": "ٹیم",
+      "description": "ورک اسپیس کے لوگ۔",
+      "card_title": "ڈائریکٹری",
+      "card_description": "ساتھی",
+      "card_body": "دعوت نامے بعد میں شامل کریں۔"
+    },
+    "documents": {
+      "title": "دستاویزات",
+      "description": "ٹیننٹ میں شیئر شدہ فائلیں۔",
+      "card_title": "لائبریری",
+      "card_description": "اسٹوریج",
+      "card_body": "آبجیکٹ اسٹوریج منسلک کریں۔"
+    },
+    "notifications": {
+      "title": "اطلاعات",
+      "description": "ایپس اور ٹیننٹس کے الرٹس۔",
+      "card_title": "ان باکس",
+      "card_description": "نیا اور محفوظ شدہ",
+      "card_body": "ویب ساکٹ یا پولنگ۔"
+    },
+    "help": {
+      "title": "مدد مرکز",
+      "description": "گائیڈز اور سپورٹ۔",
+      "card_title": "وسائل",
+      "card_description": "دستاویز",
+      "card_body": "اپنا نالج بیس یہاں لگائیں۔"
+    },
+    "tenant_members": {
+      "title": "اراکین اور کردار",
+      "description": "اس ٹیننٹ میں صارفین اور کردار۔",
+      "card_title": "رسائی",
+      "card_description": "RBAC",
+      "card_body": "پروڈکشن میں سخت چیک۔"
+    },
+    "tenant_audit": {
+      "title": "ٹیننٹ آڈٹ",
+      "description": "سیکیورٹی واقعات۔",
+      "card_title": "واقعات",
+      "card_description": "کس نے کیا",
+      "card_body": "SIEM برآمد۔"
+    },
+    "tenant_billing": {
+      "title": "ٹیننٹ بلنگ",
+      "description": "منصوبے اور انوائسز۔",
+      "card_title": "سبسکرپشن",
+      "card_description": "اسٹرائپ",
+      "card_body": "ہر ٹیننٹ کا Customer ID۔"
+    },
+    "admin": {
+      "title": "پلیٹ فارم ایڈمن",
+      "description": "تمام ٹیننٹس پر عمل۔",
+      "card_title": "کنٹرول",
+      "card_description": "عالمی جائزہ",
+      "card_body": "سرور پر اضافی کردار چیک کریں۔"
+    },
+    "admin_users": {
+      "title": "تمام صارفین",
+      "description": "ہر ٹیننٹ کے صارفین۔",
+      "card_title": "ڈائریکٹری",
+      "card_description": "تلاش",
+      "card_body": "صفحہ بندی اور فلٹر۔"
+    },
+    "admin_tenants": {
+      "title": "ٹیننٹس",
+      "description": "تنظیمیں بنائیں یا معطل کریں۔",
+      "card_title": "رجسٹر",
+      "card_description": "ملٹی ٹیننٹ",
+      "card_body": "ہر ٹیننٹ الگ ڈیٹا۔"
+    },
+    "admin_audit": {
+      "title": "پلیٹ فارم آڈٹ",
+      "description": "عالمی لاگ۔",
+      "card_title": "ٹریل",
+      "card_description": "کراس ٹیننٹ",
+      "card_body": "ٹیننٹ آڈٹ سے مختلف رکھیں۔"
+    },
+    "admin_api_keys": {
+      "title": "API کلیدیں",
+      "description": "سروس اکاؤنٹس۔",
+      "card_title": "راز",
+      "card_description": "گردش",
+      "card_body": "صرف ہیش محفوظ کریں۔"
+    },
+    "admin_reports": {
+      "title": "رپورٹس",
+      "description": "ایکسپورٹ اور تجزیہ۔",
+      "card_title": "بینش",
+      "card_description": "BI",
+      "card_body": "ڈیٹاسیٹ منسلک کریں۔"
+    }
+  },
+  "settings": {
+    "title": "ترتیبات",
+    "description": "اپنے اکاؤنٹ کی ترتیبات اور ترجیحات منظم کریں۔",
+    "security": {
+      "title": "سیکیورٹی",
+      "description": "اضافی تصدیق کے ساتھ اپنے اکاؤنٹ کی حفاظت کریں۔",
+      "two_factor_title": "دو مرحلہ تصدیق",
+      "two_factor_description": "سائن ان پر پاس ورڈ کے بعد دوسرا مرحلہ شامل کریں۔",
+      "two_factor_hint": "جب آپ کا ورک اسپیس شناخت فراہم کنندگان کو فعال کرے گا تو 2FA دستیاب ہوگا۔",
+      "two_factor_enable": "فعال کریں (جلد)"
+    }
   },
   "dashboard": {
     "title": "خوش آمدید",
@@ -24,10 +175,46 @@
   "auth": {
     "login": "لاگ ان",
     "signup": "سائن اپ",
+    "signup_submit": "اکاؤنٹ بنائیں",
+    "name": "پورا نام",
+    "confirm_password": "پاس ورڈ کی تصدیق",
     "forgot_password": "پاس ورڈ بھول گئے؟",
     "reset_password": "پاس ورڈ دوبارہ ترتیب دیں",
     "email": "ای میل",
     "password": "پاس ورڈ",
-    "submit": "جاری رکھیں"
+    "submit": "جاری رکھیں",
+    "login_tagline": "ڈیش بورڈ تک رسائی کے لیے اپنا لاگ ان درج کریں",
+    "login_description": "جاری رکھنے کے لیے اپنے اکاؤنٹ میں سائن ان کریں",
+    "signup_tagline": "شروع کرنے کے لیے اپنا اکاؤنٹ بنائیں",
+    "signup_description": "رجسٹر ہونے کے لیے ذیل کے خانے پُر کریں",
+    "no_account": "اکاؤنٹ نہیں ہے؟",
+    "have_account": "پہلے سے اکاؤنٹ ہے؟",
+    "remember_me": "اس ڈیوائس پر مجھے یاد رکھیں",
+    "continue_google": "Google کے ساتھ جاری رکھیں",
+    "divider_or": "یا",
+    "forgot_title": "پاس ورڈ یاد نہیں",
+    "forgot_description": "ای میل درج کریں؛ جب ای میل منسلک ہوگی تو ہم ری سیٹ کی ہدایات بھیجیں گے۔",
+    "forgot_card_title": "ری سیٹ لنک",
+    "forgot_card_description": "ہم آپ کو نیا پاس ورڈ چننے کے لیے ایک لنک ای میل کریں گے۔",
+    "send_reset_link": "ری سیٹ لنک بھیجیں",
+    "reset_title": "نیا پاس ورڈ",
+    "reset_description": "ایسا مضبوط پاس ورڈ چنیں جو پہلے استعمال نہ کیا ہو۔",
+    "reset_card_title": "نیا پاس ورڈ",
+    "reset_card_description": "نیا پاس ورڈ درج کریں اور تصدیق کریں۔",
+    "reset_password_submit": "پاس ورڈ اپ ڈیٹ کریں",
+    "reset_invalid_title": "لنک غلط یا موجود نہیں",
+    "reset_invalid_description": "نیا لنک 'پاس ورڈ بھول گئے' صفحے سے مانگیں، یا ای میل سے لنک دوبارہ کھولیں۔",
+    "back_to_login": "لاگ ان پر واپس",
+    "mock_hint": "موک موڈ: demo@example.com / password123 (یا سائن اپ — مقامی محفوظ)",
+    "error_invalid_credentials": "ای میل یا پاس ورڈ غلط ہے۔",
+    "error_email_exists": "اس ای میل سے پہلے سے اکاؤنٹ ہے۔",
+    "error_not_implemented": "HTTP تصدیق ابھی نہیں۔ NEXT_PUBLIC_AUTH_DRIVER=mock رکھیں یا http.provider.ts مکمل کریں۔",
+    "error_generic": "کچھ غلط ہوا۔ دوبارہ کوشش کریں۔",
+    "toast_login_success": "کامیابی سے سائن ان۔",
+    "toast_admin_only": "یہ حصہ صرف منتظمین کے لیے ہے۔",
+    "toast_signup_success": "اکاؤنٹ بن گیا۔ خوش آمدید!",
+    "toast_forgot_success": "اگر وہ ای میل موجود ہے تو ہم نے ہدایات بھیج دی ہیں۔",
+    "toast_reset_success": "پاس ورڈ اپ ڈیٹ۔ نئے پاس ورڈ سے سائن ان کریں۔",
+    "toast_reset_no_token": "ای میل والے ری سیٹ لنک سے یہ صفحہ کھولیں جس میں ٹوکن ہو۔"
   }
 }

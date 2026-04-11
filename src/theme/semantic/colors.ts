@@ -1,5 +1,6 @@
 import { colors } from "../tokens/colors";
 
+/** Softer dark palette: less harsh contrast, muted primary (not “neon” on #0c0e13). */
 export const semanticColors = {
   light: {
     background: colors.neutral[0],
@@ -32,33 +33,33 @@ export const semanticColors = {
     },
   },
   dark: {
-    background: colors.neutral[950],
-    foreground: colors.neutral[50],
-    surface: colors.neutral[900],
-    border: colors.neutral[800],
-    input: colors.neutral[900],
-    ring: colors.primary[400],
+    background: "#0c0e13",
+    foreground: "#e8eaef",
+    surface: "#12161f",
+    border: "#2a3140",
+    input: "#1a1f2a",
+    ring: "#4f6fad",
 
     primary: {
-      default: colors.primary[500],
-      foreground: colors.neutral[0],
-      muted: colors.primary[900],
+      default: "#6d9cf0",
+      foreground: "#0c0e13",
+      muted: "#1e2a3d",
     },
     secondary: {
-      default: colors.neutral[800],
-      foreground: colors.neutral[50],
+      default: "#1e2430",
+      foreground: "#e8eaef",
     },
     muted: {
-      default: colors.neutral[900],
-      foreground: colors.neutral[400],
+      default: "#161b24",
+      foreground: "#9aa4b2",
     },
     accent: {
-      default: colors.neutral[800],
-      foreground: colors.neutral[50],
+      default: "#1e2430",
+      foreground: "#e8eaef",
     },
     destructive: {
-      default: colors.error[900],
-      foreground: colors.neutral[50],
+      default: "#e85d5d",
+      foreground: "#0c0e13",
     },
   },
 };
