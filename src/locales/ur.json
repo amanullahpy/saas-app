@@ -1,0 +1,33 @@
+{
+  "common": {
+    "dashboard": "ڈیش بورڈ",
+    "analytics": "تجزیہ",
+    "chat": "AI چیٹ",
+    "billing": "بلنگ",
+    "settings": "ترتیبات",
+    "profile": "پروفائل",
+    "security": "سیکیورٹی",
+    "logout": "لاگ آؤٹ",
+    "search": "تلاش کریں...",
+    "notifications": "اطلاعات"
+  },
+  "dashboard": {
+    "title": "خوش آمدید",
+    "description": "آج آپ کے پراجیکٹس میں کیا ہو رہا ہے یہاں دیکھیں۔",
+    "stats": {
+      "revenue": "کل آمدنی",
+      "subscriptions": "سبسکرپشنز",
+      "sales": "فروخت",
+      "active_now": "اب فعال"
+    }
+  },
+  "auth": {
+    "login": "لاگ ان",
+    "signup": "سائن اپ",
+    "forgot_password": "پاس ورڈ بھول گئے؟",
+    "reset_password": "پاس ورڈ دوبارہ ترتیب دیں",
+    "email": "ای میل",
+    "password": "پاس ورڈ",
+    "submit": "جاری رکھیں"
+  }
+}

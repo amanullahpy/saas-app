@@ -1,0 +1,33 @@
+{
+  "common": {
+    "dashboard": "Dashboard",
+    "analytics": "Analytics",
+    "chat": "AI Chat",
+    "billing": "Billing",
+    "settings": "Settings",
+    "profile": "Profile",
+    "security": "Security",
+    "logout": "Logout",
+    "search": "Search...",
+    "notifications": "Notifications"
+  },
+  "dashboard": {
+    "title": "Welcome Back",
+    "description": "Here is what's happening with your projects today.",
+    "stats": {
+      "revenue": "Total Revenue",
+      "subscriptions": "Subscriptions",
+      "sales": "Sales",
+      "active_now": "Active Now"
+    }
+  },
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "forgot_password": "Forgot Password?",
+    "reset_password": "Reset Password",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Continue"
+  }
+}

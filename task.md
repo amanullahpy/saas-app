@@ -1,0 +1,12 @@
+- [ ] Initialize shadcn UI
+- [ ] Add required shadcn blocks (dashboard, auth, card, table)
+- [ ] Install tweaks.cn and generate Tailwind config
+- [ ] Create .mcp.json configuration
+- [ ] Add MCP init script to package.json
+- [ ] Create src/config/clientConfig.ts
+- [ ] Create .env.example
+- [ ] Create src/config/routes.ts with centralized route constants
+- [ ] Update navigation.ts to import routes
+- [ ] Move existing UI components into shadcn blocks folder and adjust imports
+- [ ] Run lint and build to verify
+- [ ] Manual smoke test of all pages
