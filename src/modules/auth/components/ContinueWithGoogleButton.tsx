@@ -5,9 +5,7 @@ import { Button } from "@/components/ui/button";
 import { GoogleGlyph } from "./GoogleGlyph";
 import { cn } from "@/lib/utils";
 
-type Props = {
-  className?: string;
-};
+type Props = { className?: string };
 
 /** Placeholder OAuth control — disabled until backend wiring. */
 export function ContinueWithGoogleButton({ className }: Props) {
@@ -20,13 +18,13 @@ export function ContinueWithGoogleButton({ className }: Props) {
       disabled
       aria-disabled
       className={cn(
-        "h-11 w-full gap-3 border-border/50 bg-muted/30 text-muted-foreground shadow-none",
-        "hover:bg-muted/30",
+        "h-11 w-full gap-3 rounded-xl border-border/60 bg-background font-medium text-foreground/70 shadow-none",
+        "hover:bg-muted/50 disabled:opacity-60 disabled:cursor-not-allowed",
         className
       )}
     >
-      <GoogleGlyph className="size-[18px] shrink-0 opacity-80" />
-      <span className="text-sm font-medium">{t("continue_google")}</span>
+      <GoogleGlyph className="size-[18px] shrink-0" />
+      <span className="text-sm">{t("continue_google")}</span>
     </Button>
   );
 }

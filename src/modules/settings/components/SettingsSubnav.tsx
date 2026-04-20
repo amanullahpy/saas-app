@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 const tabs = [
   { href: ROUTES.SETTINGS, labelKey: "profile" as const },
   { href: ROUTES.SETTINGS_SECURITY, labelKey: "security" as const },
+  { href: ROUTES.SETTINGS_SKILLS, labelKey: "skills" as const },
 ];
 
 export function SettingsSubnav() {
@@ -17,10 +18,7 @@ export function SettingsSubnav() {
   return (
     <nav className="flex flex-wrap gap-2 border-b border-border pb-4" aria-label="Settings sections">
       {tabs.map(({ href, labelKey }) => {
-        const active =
-          href === ROUTES.SETTINGS_SECURITY
-            ? pathname === ROUTES.SETTINGS_SECURITY
-            : pathname === ROUTES.SETTINGS;
+        const active = pathname === href;
         return (
           <Link
             key={href}

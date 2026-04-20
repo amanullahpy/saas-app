@@ -42,7 +42,8 @@
     "admin_tenants": "Tenants",
     "admin_audit": "Platform audit",
     "admin_api_keys": "API keys",
-    "admin_reports": "Reports"
+    "admin_reports": "Reports",
+    "skills": "Skills"
   },
   "pages": {
     "workspace": {
@@ -161,6 +162,15 @@
       "two_factor_description": "Add a second step after your password when you sign in.",
       "two_factor_hint": "2FA will be available when your workspace enables identity providers.",
       "two_factor_enable": "Enable (soon)"
+    },
+    "skills": {
+      "title": "Skills",
+      "description": "Showcase your frontend and full-stack expertise.",
+      "frontend_title": "Frontend Skills",
+      "frontend_description": "UI technologies, frameworks, and tools you work with.",
+      "fullstack_title": "Full-Stack Skills",
+      "fullstack_description": "Backend, databases, DevOps, and other engineering skills.",
+      "save": "Save Skills"
     }
   },
   "dashboard": {
@@ -217,5 +227,270 @@
     "toast_forgot_success": "If that email exists, we sent reset instructions.",
     "toast_reset_success": "Password updated. You can sign in with the new password.",
     "toast_reset_no_token": "Open this page from the email link that includes a reset token."
+  },
+  "ui": {
+    "actions": {
+      "add": "Add",
+      "edit": "Edit",
+      "delete": "Delete",
+      "view": "View",
+      "save": "Save",
+      "cancel": "Cancel",
+      "create": "Create",
+      "update": "Update",
+      "remove": "Remove",
+      "invite": "Invite",
+      "download": "Download",
+      "export": "Export",
+      "search": "Search",
+      "filter": "Filter",
+      "sort": "Sort",
+      "refresh": "Refresh",
+      "close": "Close",
+      "confirm": "Confirm",
+      "back": "Back",
+      "next": "Next",
+      "previous": "Previous",
+      "submit": "Submit",
+      "reset": "Reset",
+      "clear": "Clear"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "pending": "Pending",
+      "suspended": "Suspended",
+      "completed": "Completed",
+      "in_progress": "In Progress",
+      "planning": "Planning",
+      "draft": "Draft",
+      "published": "Published",
+      "archived": "Archived",
+      "online": "Online",
+      "offline": "Offline",
+      "away": "Away",
+      "busy": "Busy",
+      "available": "Available"
+    },
+    "labels": {
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "status": "Status",
+      "date": "Date",
+      "time": "Time",
+      "created": "Created",
+      "updated": "Updated",
+      "last_seen": "Last Seen",
+      "members": "Members",
+      "tasks": "Tasks",
+      "progress": "Progress",
+      "due_date": "Due Date",
+      "description": "Description",
+      "title": "Title",
+      "type": "Type",
+      "size": "Size",
+      "plan": "Plan",
+      "tenant": "Tenant",
+      "organization": "Organization",
+      "department": "Department",
+      "joined": "Joined",
+      "amount": "Amount",
+      "invoice": "Invoice",
+      "payment": "Payment",
+      "subscription": "Subscription"
+    },
+    "messages": {
+      "no_data": "No data available",
+      "loading": "Loading...",
+      "error": "An error occurred",
+      "success": "Operation completed successfully",
+      "confirm_delete": "Are you sure you want to delete this {item}?",
+      "confirm_remove": "Are you sure you want to remove {name}?",
+      "item_created": "{item} created successfully",
+      "item_updated": "{item} updated successfully",
+      "item_deleted": "{item} deleted successfully",
+      "item_removed": "{name} removed successfully",
+      "download_started": "Download started",
+      "download_complete": "Download completed",
+      "search_placeholder": "Search {items}...",
+      "filter_placeholder": "Filter by {field}...",
+      "select_placeholder": "Select {item}...",
+      "empty_state": "No {items} found",
+      "try_again": "Please try again"
+    },
+    "forms": {
+      "required": "This field is required",
+      "invalid_email": "Please enter a valid email address",
+      "password_min": "Password must be at least 8 characters",
+      "passwords_match": "Passwords must match",
+      "invalid_format": "Invalid format",
+      "field_too_long": "This field is too long",
+      "field_too_short": "This field is too short",
+      "invalid_number": "Please enter a valid number",
+      "invalid_date": "Please enter a valid date",
+      "invalid_url": "Please enter a valid URL"
+    }
+  },
+  "modules": {
+    "projects": {
+      "title": "Projects",
+      "description": "Track initiatives across your workspace.",
+      "new_project": "New Project",
+      "edit_project": "Edit Project",
+      "project_details": "Project Details",
+      "project_name": "Project Name",
+      "project_status": "Status",
+      "total_tasks": "Total Tasks",
+      "completed_tasks": "Completed Tasks",
+      "team_members": "Team Members",
+      "due_date": "Due Date",
+      "create_project": "Create Project",
+      "save_changes": "Save Changes",
+      "delete_project": "Delete Project",
+      "project_created": "Project \"{name}\" created successfully",
+      "project_updated": "Project updated successfully",
+      "project_deleted": "\"{name}\" deleted successfully",
+      "stats": {
+        "total": "Total",
+        "in_progress": "In Progress",
+        "completed": "Completed",
+        "planning": "Planning"
+      }
+    },
+    "team": {
+      "title": "Team",
+      "description": "Manage team members and their roles.",
+      "invite_member": "Invite Member",
+      "edit_member": "Edit Member",
+      "member_details": "Member Details",
+      "member_name": "Name",
+      "member_email": "Email",
+      "member_role": "Role",
+      "member_department": "Department",
+      "member_status": "Status",
+      "invite_sent": "Invitation sent to {email}",
+      "member_updated": "Member updated successfully",
+      "member_removed": "{name} removed from team",
+      "roles": {
+        "admin": "Admin",
+        "member": "Member",
+        "viewer": "Viewer"
+      }
+    },
+    "documents": {
+      "title": "Documents",
+      "description": "Manage files and documents in your workspace.",
+      "upload_document": "Upload Document",
+      "rename_document": "Rename Document",
+      "document_name": "Document Name",
+      "file_type": "File Type",
+      "file_size": "File Size",
+      "upload_date": "Upload Date",
+      "storage_used": "Storage Used",
+      "storage_limit": "Storage Limit",
+      "document_uploaded": "Document uploaded successfully",
+      "document_renamed": "Document renamed successfully",
+      "document_deleted": "Document deleted successfully"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "description": "Stay updated with important alerts and messages.",
+      "mark_read": "Mark as Read",
+      "mark_unread": "Mark as Unread",
+      "dismiss": "Dismiss",
+      "notification_details": "Notification Details",
+      "all_read": "All notifications marked as read",
+      "notification_dismissed": "Notification dismissed"
+    },
+    "admin": {
+      "users": {
+        "title": "All Users",
+        "description": "Manage users across all tenants.",
+        "suspend_user": "Suspend User",
+        "reactivate_user": "Reactivate User",
+        "user_suspended": "User suspended successfully",
+        "user_reactivated": "User reactivated successfully"
+      },
+      "tenants": {
+        "title": "Tenants",
+        "description": "Manage tenant organizations.",
+        "new_tenant": "New Tenant",
+        "edit_tenant": "Edit Tenant",
+        "tenant_name": "Tenant Name",
+        "tenant_plan": "Plan",
+        "tenant_region": "Region",
+        "member_count": "Members",
+        "created_date": "Created",
+        "tenant_created": "Tenant created successfully",
+        "tenant_updated": "Tenant updated successfully",
+        "tenant_suspended": "Tenant suspended successfully"
+      },
+      "api_keys": {
+        "title": "API Keys",
+        "description": "Manage platform API keys and service accounts.",
+        "new_api_key": "New API Key",
+        "key_name": "Key Name",
+        "key_scope": "Scope",
+        "created_date": "Created",
+        "last_used": "Last Used",
+        "revoke_key": "Revoke Key",
+        "key_created": "API key created successfully",
+        "key_revoked": "API key revoked successfully",
+        "copy_key": "Copy Key",
+        "key_copied": "API key copied to clipboard"
+      },
+      "audit": {
+        "title": "Platform Audit Log",
+        "description": "Security events and administrative actions.",
+        "action": "Action",
+        "actor": "Actor",
+        "target": "Target",
+        "ip_address": "IP Address",
+        "timestamp": "Time",
+        "severity": "Severity",
+        "event_details": "Event Details"
+      },
+      "reports": {
+        "title": "Reports",
+        "description": "Generate and download platform reports.",
+        "generate_report": "Generate Report",
+        "download_report": "Download Report",
+        "report_name": "Report Name",
+        "report_type": "Type",
+        "generated_date": "Generated",
+        "report_size": "Size",
+        "report_downloaded": "Report downloaded successfully"
+      }
+    },
+    "tenant": {
+      "members": {
+        "title": "Members & Roles",
+        "description": "Manage members and permissions for this tenant.",
+        "invite_member": "Invite Member",
+        "change_role": "Change Role",
+        "remove_member": "Remove Member",
+        "member_invited": "Member invited successfully",
+        "role_changed": "Role changed successfully",
+        "member_removed": "Member removed successfully"
+      },
+      "audit": {
+        "title": "Tenant Audit Log",
+        "description": "Security events for this organization."
+      },
+      "billing": {
+        "title": "Tenant Billing",
+        "description": "Manage billing and subscription for this tenant.",
+        "current_plan": "Current Plan",
+        "billing_cycle": "Billing Cycle",
+        "next_payment": "Next Payment",
+        "payment_method": "Payment Method",
+        "invoice_history": "Invoice History",
+        "upgrade_plan": "Upgrade Plan",
+        "update_payment": "Update Payment Method",
+        "plan_upgraded": "Plan upgraded successfully",
+        "payment_updated": "Payment method updated successfully"
+      }
+    }
   }
 }

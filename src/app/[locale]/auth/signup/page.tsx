@@ -1,8 +1,6 @@
 import { SignupForm } from "@/modules/auth/forms/SignupForm";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { appConfig } from "@/config/app.config";
 import { ROUTES } from "@/config/routes";
 import { authConfig } from "@/config/auth";
 
@@ -14,37 +12,40 @@ export default async function SignupPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("auth");
-  const tc = await getTranslations("common");
 
   return (
-    <div className="w-full space-y-6 sm:space-y-8">
-      <div className="flex flex-col items-center gap-2 px-1 text-center">
-        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-2xl font-bold text-primary-foreground shadow-lg shadow-primary/20 sm:h-14 sm:w-14 sm:text-3xl">
-          {appConfig.name.charAt(0)}
-        </div>
-        <h1 className="text-balance text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-          {tc("product_title")}
+    <div className="w-full space-y-8">
+      {/* Heading */}
+      <div className="space-y-2">
+        <h1 className="text-[1.75rem] font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+          {t("signup")}
         </h1>
-        <p className="max-w-sm text-pretty text-sm text-muted-foreground">{t("signup_tagline")}</p>
+        <p className="text-sm text-neutral-500 dark:text-neutral-400">
+          {t("signup_description")}
+        </p>
       </div>
 
-      <Card className="overflow-hidden rounded-2xl border border-border/60 bg-card shadow-xl shadow-foreground/5 sm:rounded-3xl">
-        <CardHeader className="space-y-1 pb-2 sm:pb-4">
-          <CardTitle className="text-lg sm:text-xl">{t("signup")}</CardTitle>
-          <CardDescription className="text-sm">{t("signup_description")}</CardDescription>
-        </CardHeader>
-        <CardContent className="pb-6 sm:pb-8">
-          <SignupForm />
-        </CardContent>
-      </Card>
+      {/* Form card */}
+      <div className="rounded-2xl border border-neutral-200 dark:border-neutral-700/60 bg-white dark:bg-neutral-900 p-6 shadow-sm sm:p-8">
+        <SignupForm />
+      </div>
 
-      {authConfig.driver === "mock" ? (
-        <p className="text-center text-xs leading-relaxed text-muted-foreground">{t("mock_hint")}</p>
-      ) : null}
+      {/* Mock hint */}
+      {authConfig.driver === "mock" && (
+        <div className="rounded-xl border border-amber-200 dark:border-amber-800/50 bg-amber-50 dark:bg-amber-950/20 px-4 py-3">
+          <p className="text-center text-xs leading-relaxed text-amber-700 dark:text-amber-400">
+            {t("mock_hint")}
+          </p>
+        </div>
+      )}
 
-      <p className="text-center text-sm text-muted-foreground">
+      {/* Footer */}
+      <p className="text-center text-sm text-neutral-500 dark:text-neutral-400">
         {t("have_account")}{" "}
-        <Link href={ROUTES.AUTH_LOGIN} className="font-medium text-primary hover:underline">
+        <Link
+          href={ROUTES.AUTH_LOGIN}
+          className="font-semibold text-primary underline-offset-4 hover:underline"
+        >
           {t("login")}
         </Link>
       </p>

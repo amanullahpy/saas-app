@@ -42,7 +42,8 @@
     "admin_tenants": "ٹیننٹس",
     "admin_audit": "پلیٹ فارم آڈٹ",
     "admin_api_keys": "API کلیدیں",
-    "admin_reports": "رپورٹس"
+    "admin_reports": "رپورٹس",
+    "skills": "مہارتیں"
   },
   "pages": {
     "workspace": {
@@ -161,6 +162,15 @@
       "two_factor_description": "سائن ان پر پاس ورڈ کے بعد دوسرا مرحلہ شامل کریں۔",
       "two_factor_hint": "جب آپ کا ورک اسپیس شناخت فراہم کنندگان کو فعال کرے گا تو 2FA دستیاب ہوگا۔",
       "two_factor_enable": "فعال کریں (جلد)"
+    },
+    "skills": {
+      "title": "مہارتیں",
+      "description": "اپنی فرنٹ اینڈ اور فل اسٹیک مہارتیں ظاہر کریں۔",
+      "frontend_title": "فرنٹ اینڈ مہارتیں",
+      "frontend_description": "UI ٹیکنالوجیز، فریم ورکس، اور ٹولز جو آپ استعمال کرتے ہیں۔",
+      "fullstack_title": "فل اسٹیک مہارتیں",
+      "fullstack_description": "بیک اینڈ، ڈیٹا بیس، DevOps، اور دیگر انجینئرنگ مہارتیں۔",
+      "save": "مہارتیں محفوظ کریں"
     }
   },
   "dashboard": {
@@ -217,5 +227,270 @@
     "toast_forgot_success": "اگر وہ ای میل موجود ہے تو ہم نے ہدایات بھیج دی ہیں۔",
     "toast_reset_success": "پاس ورڈ اپ ڈیٹ۔ نئے پاس ورڈ سے سائن ان کریں۔",
     "toast_reset_no_token": "ای میل والے ری سیٹ لنک سے یہ صفحہ کھولیں جس میں ٹوکن ہو۔"
+  },
+  "ui": {
+    "actions": {
+      "add": "شامل کریں",
+      "edit": "ترمیم",
+      "delete": "حذف کریں",
+      "view": "دیکھیں",
+      "save": "محفوظ کریں",
+      "cancel": "منسوخ",
+      "create": "بنائیں",
+      "update": "اپ ڈیٹ",
+      "remove": "ہٹائیں",
+      "invite": "دعوت دیں",
+      "download": "ڈاؤن لوڈ",
+      "export": "برآمد",
+      "search": "تلاش",
+      "filter": "فلٹر",
+      "sort": "ترتیب",
+      "refresh": "تازہ کریں",
+      "close": "بند کریں",
+      "confirm": "تصدیق",
+      "back": "واپس",
+      "next": "اگلا",
+      "previous": "پچھلا",
+      "submit": "جمع کریں",
+      "reset": "ری سیٹ",
+      "clear": "صاف کریں"
+    },
+    "status": {
+      "active": "فعال",
+      "inactive": "غیر فعال",
+      "pending": "زیر التواء",
+      "suspended": "معطل",
+      "completed": "مکمل",
+      "in_progress": "جاری",
+      "planning": "منصوبہ بندی",
+      "draft": "مسودہ",
+      "published": "شائع شدہ",
+      "archived": "محفوظ شدہ",
+      "online": "آن لائن",
+      "offline": "آف لائن",
+      "away": "غیر موجود",
+      "busy": "مصروف",
+      "available": "دستیاب"
+    },
+    "labels": {
+      "name": "نام",
+      "email": "ای میل",
+      "role": "کردار",
+      "status": "حالت",
+      "date": "تاریخ",
+      "time": "وقت",
+      "created": "بنایا گیا",
+      "updated": "اپ ڈیٹ شدہ",
+      "last_seen": "آخری بار دیکھا گیا",
+      "members": "اراکین",
+      "tasks": "کام",
+      "progress": "پیش قدمی",
+      "due_date": "آخری تاریخ",
+      "description": "تفصیل",
+      "title": "عنوان",
+      "type": "قسم",
+      "size": "سائز",
+      "plan": "منصوبہ",
+      "tenant": "ٹیننٹ",
+      "organization": "تنظیم",
+      "department": "شعبہ",
+      "joined": "شامل ہوئے",
+      "amount": "رقم",
+      "invoice": "انوائس",
+      "payment": "ادائیگی",
+      "subscription": "سبسکرپشن"
+    },
+    "messages": {
+      "no_data": "کوئی ڈیٹا دستیاب نہیں",
+      "loading": "لوڈ ہو رہا ہے...",
+      "error": "خرابی ہوئی",
+      "success": "کامیابی سے مکمل",
+      "confirm_delete": "کیا آپ واقعی یہ {item} حذف کرنا چاہتے ہیں؟",
+      "confirm_remove": "کیا آپ واقعی {name} کو ہٹانا چاہتے ہیں؟",
+      "item_created": "{item} کامیابی سے بنایا گیا",
+      "item_updated": "{item} کامیابی سے اپ ڈیٹ ہوا",
+      "item_deleted": "{item} کامیابی سے حذف ہوا",
+      "item_removed": "{name} کامیابی سے ہٹایا گیا",
+      "download_started": "ڈاؤن لوڈ شروع ہوا",
+      "download_complete": "ڈاؤن لوڈ مکمل",
+      "search_placeholder": "{items} تلاش کریں...",
+      "filter_placeholder": "{field} کے ذریعے فلٹر کریں...",
+      "select_placeholder": "{item} منتخب کریں...",
+      "empty_state": "کوئی {items} نہیں ملے",
+      "try_again": "دوبارہ کوشش کریں"
+    },
+    "forms": {
+      "required": "یہ فیلڈ ضروری ہے",
+      "invalid_email": "درست ای میل ایڈریس درج کریں",
+      "password_min": "پاس ورڈ کم از کم 8 حروف کا ہونا چاہیے",
+      "passwords_match": "پاس ورڈ میں مطابقت ہونی چاہیے",
+      "invalid_format": "غلط فارمیٹ",
+      "field_too_long": "یہ فیلڈ بہت لمبا ہے",
+      "field_too_short": "یہ فیلڈ بہت چھوٹا ہے",
+      "invalid_number": "درست نمبر درج کریں",
+      "invalid_date": "درست تاریخ درج کریں",
+      "invalid_url": "درست URL درج کریں"
+    }
+  },
+  "modules": {
+    "projects": {
+      "title": "منصوبے",
+      "description": "اپنے ورک اسپیس میں منصوبوں کو ٹریک کریں۔",
+      "new_project": "نیا منصوبہ",
+      "edit_project": "منصوبہ میں ترمیم",
+      "project_details": "منصوبے کی تفصیلات",
+      "project_name": "منصوبے کا نام",
+      "project_status": "حالت",
+      "total_tasks": "کل کام",
+      "completed_tasks": "مکمل کام",
+      "team_members": "ٹیم کے اراکین",
+      "due_date": "آخری تاریخ",
+      "create_project": "منصوبہ بنائیں",
+      "save_changes": "تبدیلیاں محفوظ کریں",
+      "delete_project": "منصوبہ حذف کریں",
+      "project_created": "منصوبہ \"{name}\" کامیابی سے بنایا گیا",
+      "project_updated": "منصوبہ کامیابی سے اپ ڈیٹ ہوا",
+      "project_deleted": "\"{name}\" کامیابی سے حذف ہوا",
+      "stats": {
+        "total": "کل",
+        "in_progress": "جاری",
+        "completed": "مکمل",
+        "planning": "منصوبہ بندی"
+      }
+    },
+    "team": {
+      "title": "ٹیم",
+      "description": "ٹیم کے اراکین اور ان کے کردار کا انتظام کریں۔",
+      "invite_member": "رکن کو دعوت دیں",
+      "edit_member": "رکن میں ترمیم",
+      "member_details": "رکن کی تفصیلات",
+      "member_name": "نام",
+      "member_email": "ای میل",
+      "member_role": "کردار",
+      "member_department": "شعبہ",
+      "member_status": "حالت",
+      "invite_sent": "{email} کو دعوت بھیجی گئی",
+      "member_updated": "رکن کامیابی سے اپ ڈیٹ ہوا",
+      "member_removed": "{name} کو ٹیم سے ہٹا دیا گیا",
+      "roles": {
+        "admin": "ایڈمن",
+        "member": "رکن",
+        "viewer": "ناظر"
+      }
+    },
+    "documents": {
+      "title": "دستاویزات",
+      "description": "اپنے ورک اسپیس میں فائلوں اور دستاویزات کا انتظام کریں۔",
+      "upload_document": "دستاویز اپ لوڈ کریں",
+      "rename_document": "دستاویز کا نام تبدیل کریں",
+      "document_name": "دستاویز کا نام",
+      "file_type": "فائل کی قسم",
+      "file_size": "فائل کا سائز",
+      "upload_date": "اپ لوڈ کی تاریخ",
+      "storage_used": "استعمال شدہ اسٹوریج",
+      "storage_limit": "اسٹوریج کی حد",
+      "document_uploaded": "دستاویز کامیابی سے اپ لوڈ ہوا",
+      "document_renamed": "دستاویز کا نام کامیابی سے تبدیل ہوا",
+      "document_deleted": "دستاویز کامیابی سے حذف ہوا"
+    },
+    "notifications": {
+      "title": "اطلاعات",
+      "description": "اہم الرٹس اور پیغامات سے اپ ڈیٹ رہیں۔",
+      "mark_read": "پڑھا ہوا نشان لگائیں",
+      "mark_unread": "نہیں پڑھا نشان لگائیں",
+      "dismiss": "مسترد کریں",
+      "notification_details": "اطلاع کی تفصیلات",
+      "all_read": "تمام اطلاعات پڑھی ہوئی نشان لگائی گئی",
+      "notification_dismissed": "اطلاع مسترد کر دی گئی"
+    },
+    "admin": {
+      "users": {
+        "title": "تمام صارفین",
+        "description": "تمام ٹیننٹس کے صارفین کا انتظام کریں۔",
+        "suspend_user": "صارف کو معطل کریں",
+        "reactivate_user": "صارف کو دوبارہ فعال کریں",
+        "user_suspended": "صارف کامیابی سے معطل ہوا",
+        "user_reactivated": "صارف کامیابی سے دوبارہ فعال ہوا"
+      },
+      "tenants": {
+        "title": "ٹیننٹس",
+        "description": "ٹیننٹ تنظیموں کا انتظام کریں۔",
+        "new_tenant": "نیا ٹیننٹ",
+        "edit_tenant": "ٹیننٹ میں ترمیم",
+        "tenant_name": "ٹیننٹ کا نام",
+        "tenant_plan": "منصوبہ",
+        "tenant_region": "علاقہ",
+        "member_count": "اراکین",
+        "created_date": "بنایا گیا",
+        "tenant_created": "ٹیننٹ کامیابی سے بنایا گیا",
+        "tenant_updated": "ٹیننٹ کامیابی سے اپ ڈیٹ ہوا",
+        "tenant_suspended": "ٹیننٹ کامیابی سے معطل ہوا"
+      },
+      "api_keys": {
+        "title": "API کلیدیں",
+        "description": "پلیٹ فارم API کلیدوں اور سروس اکاؤنٹس کا انتظام کریں۔",
+        "new_api_key": "نئی API کلید",
+        "key_name": "کلید کا نام",
+        "key_scope": "دائرہ کار",
+        "created_date": "بنایا گیا",
+        "last_used": "آخری بار استعمال",
+        "revoke_key": "کلید منسوخ کریں",
+        "key_created": "API کلید کامیابی سے بنائی گئی",
+        "key_revoked": "API کلید کامیابی سے منسوخ ہوئی",
+        "copy_key": "کلید کاپی کریں",
+        "key_copied": "API کلید کلپ بورڈ میں کاپی ہوئی"
+      },
+      "audit": {
+        "title": "پلیٹ فارم آڈٹ لاگ",
+        "description": "سیکیورٹی واقعات اور انتظامی اعمال۔",
+        "action": "عمل",
+        "actor": "کرنے والا",
+        "target": "ہدف",
+        "ip_address": "IP ایڈریس",
+        "timestamp": "وقت",
+        "severity": "شدت",
+        "event_details": "واقعے کی تفصیلات"
+      },
+      "reports": {
+        "title": "رپورٹس",
+        "description": "پلیٹ فارم رپورٹس بنائیں اور ڈاؤن لوڈ کریں۔",
+        "generate_report": "رپورٹ بنائیں",
+        "download_report": "رپورٹ ڈاؤن لوڈ کریں",
+        "report_name": "رپورٹ کا نام",
+        "report_type": "قسم",
+        "generated_date": "بنایا گیا",
+        "report_size": "سائز",
+        "report_downloaded": "رپورٹ کامیابی سے ڈاؤن لوڈ ہوئی"
+      }
+    },
+    "tenant": {
+      "members": {
+        "title": "اراکین اور کردار",
+        "description": "اس ٹیننٹ کے لیے اراکین اور اجازات کا انتظام کریں۔",
+        "invite_member": "رکن کو دعوت دیں",
+        "change_role": "کردار تبدیل کریں",
+        "remove_member": "رکن ہٹائیں",
+        "member_invited": "رکن کو کامیابی سے دعوت دی گئی",
+        "role_changed": "کردار کامیابی سے تبدیل ہوا",
+        "member_removed": "رکن کامیابی سے ہٹایا گیا"
+      },
+      "audit": {
+        "title": "ٹیننٹ آڈٹ لاگ",
+        "description": "اس تنظیم کے لیے سیکیورٹی واقعات۔"
+      },
+      "billing": {
+        "title": "ٹیننٹ بلنگ",
+        "description": "اس ٹیننٹ کے لیے بلنگ اور سبسکرپشن کا انتظام کریں۔",
+        "current_plan": "موجودہ منصوبہ",
+        "billing_cycle": "بلنگ سائیکل",
+        "next_payment": "اگلی ادائیگی",
+        "payment_method": "ادائیگی کا طریقہ",
+        "invoice_history": "انوائس کی تاریخ",
+        "upgrade_plan": "منصوبہ اپ گریڈ کریں",
+        "update_payment": "ادائیگی کا طریقہ اپ ڈیٹ کریں",
+        "plan_upgraded": "منصوبہ کامیابی سے اپ گریڈ ہوا",
+        "payment_updated": "ادائیگی کا طریقہ کامیابی سے اپ ڈیٹ ہوا"
+      }
+    }
   }
 }

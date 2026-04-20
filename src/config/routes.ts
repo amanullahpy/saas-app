@@ -9,6 +9,7 @@ export const ROUTES = {
   BILLING: "/billing",
   SETTINGS: "/settings",
   SETTINGS_SECURITY: "/settings/security",
+  SETTINGS_SKILLS: "/settings/skills",
   /** Current workspace / tenant context */
   WORKSPACE: "/workspace",
   PROJECTS: "/projects",
