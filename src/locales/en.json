@@ -226,7 +226,45 @@
     "toast_signup_success": "Account created. Welcome aboard!",
     "toast_forgot_success": "If that email exists, we sent reset instructions.",
     "toast_reset_success": "Password updated. You can sign in with the new password.",
-    "toast_reset_no_token": "Open this page from the email link that includes a reset token."
+    "toast_reset_no_token": "Open this page from the email link that includes a reset token.",
+    "placeholder_name": "John Doe",
+    "placeholder_email": "name@example.com",
+    "placeholder_password": "••••••••",
+    "placeholder_password_min": "Min. 8 characters",
+    "placeholder_confirm_password": "Repeat your password",
+    "forgot_success_title": "Check your inbox",
+    "forgot_success_description": "If that email exists in our system, we sent reset instructions. Don't forget to check your spam folder.",
+    "try_different_email": "Try a different email",
+    "request_new_link": "Request a new link",
+    "reset_success_title": "Password updated",
+    "reset_success_description": "You can now sign in with your new password.",
+    "placeholder_new_password": "New password",
+    "placeholder_confirm_new_password": "Confirm new password",
+    "password_strength": {
+      "weak": "Weak",
+      "fair": "Fair",
+      "good": "Good",
+      "strong": "Strong",
+      "suffix": "password"
+    }
+  },
+  "shell": {
+    "trusted_by": "Trusted by 10,000+ teams",
+    "hero_title": "Build something",
+    "hero_subtitle": "remarkable.",
+    "hero_description": "A modern multi-tenant SaaS platform built for teams that move fast and ship with confidence.",
+    "features": {
+      "multi_tenant": "Multi-tenant workspace management",
+      "rbac": "Role-based access control (RBAC)",
+      "realtime": "Real-time analytics & insights",
+      "security": "Enterprise-grade security"
+    },
+    "testimonial": {
+      "quote": "\"Saved us weeks of setup. The multi-tenant architecture just works out of the box.\"",
+      "author": "Sarah K.",
+      "role": "CTO, Acme Corp"
+    },
+    "copyright": "All rights reserved."
   },
   "ui": {
     "actions": {

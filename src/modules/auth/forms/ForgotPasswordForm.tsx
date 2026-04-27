@@ -45,9 +45,9 @@ export function ForgotPasswordForm() {
           <CheckCircle2 className="h-7 w-7 text-emerald-600 dark:text-emerald-400" />
         </div>
         <div className="space-y-1.5">
-          <p className="font-semibold text-neutral-900 dark:text-neutral-100">Check your inbox</p>
+          <p className="font-semibold text-neutral-900 dark:text-neutral-100">{t("forgot_success_title")}</p>
           <p className="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
-            If that email exists in our system, we sent reset instructions. Don't forget to check your spam folder.
+            {t("forgot_success_description")}
           </p>
         </div>
         <Button
@@ -57,7 +57,7 @@ export function ForgotPasswordForm() {
           className="rounded-xl border-neutral-300 dark:border-neutral-600"
           onClick={() => { setSent(false); form.reset(); }}
         >
-          Try a different email
+          {t("try_different_email")}
         </Button>
       </div>
     );
@@ -81,7 +81,7 @@ export function ForgotPasswordForm() {
                     type="email"
                     autoComplete="email"
                     inputMode="email"
-                    placeholder="name@example.com"
+                    placeholder={t("placeholder_email")}
                     {...field}
                     aria-invalid={!!fieldState.error}
                     className="pl-10"

@@ -63,7 +63,7 @@ export function ResetPasswordForm({ token }: Props) {
         </div>
         <Link href={ROUTES.AUTH_FORGOT_PASSWORD}>
           <Button variant="outline" size="sm" className="rounded-xl border-neutral-300 dark:border-neutral-600">
-            Request a new link
+            {t("request_new_link")}
           </Button>
         </Link>
       </div>
@@ -78,9 +78,9 @@ export function ResetPasswordForm({ token }: Props) {
           <CheckCircle2 className="h-7 w-7 text-emerald-600 dark:text-emerald-400" />
         </div>
         <div className="space-y-1.5">
-          <p className="font-semibold text-neutral-900 dark:text-neutral-100">Password updated</p>
+          <p className="font-semibold text-neutral-900 dark:text-neutral-100">{t("reset_success_title")}</p>
           <p className="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
-            You can now sign in with your new password.
+            {t("reset_success_description")}
           </p>
         </div>
         <Link href={ROUTES.AUTH_LOGIN}>
@@ -108,7 +108,7 @@ export function ResetPasswordForm({ token }: Props) {
                   <AuthInput
                     type={showPassword ? "text" : "password"}
                     autoComplete="new-password"
-                    placeholder="New password"
+                    placeholder={t("placeholder_new_password")}
                     {...field}
                     aria-invalid={!!fieldState.error}
                     className="pl-10 pr-11"
@@ -143,7 +143,7 @@ export function ResetPasswordForm({ token }: Props) {
                   <AuthInput
                     type={showConfirm ? "text" : "password"}
                     autoComplete="new-password"
-                    placeholder="Confirm new password"
+                    placeholder={t("placeholder_confirm_new_password")}
                     {...field}
                     aria-invalid={!!fieldState.error}
                     className="pl-10 pr-11"

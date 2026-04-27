@@ -53,9 +53,26 @@ const STRENGTH_META: Record<
 };
 
 function PasswordStrength({ password }: { password: string }) {
+  const t = useTranslations("auth");
   const score = getStrength(password);
   if (!password) return null;
-  const { label, barColor, textColor } = STRENGTH_META[score];
+
+  const labels = {
+    1: t("password_strength.weak"),
+    2: t("password_strength.fair"),
+    3: t("password_strength.good"),
+    4: t("password_strength.strong"),
+  };
+
+  const colors = {
+    1: { bar: "bg-red-400", text: "text-red-500" },
+    2: { bar: "bg-orange-400", text: "text-orange-500" },
+    3: { bar: "bg-yellow-400", text: "text-yellow-600 dark:text-yellow-400" },
+    4: { bar: "bg-emerald-500", text: "text-emerald-600 dark:text-emerald-400" },
+  };
+
+  const label = labels[score as keyof typeof labels] || "";
+  const color = colors[score as keyof typeof colors] || { bar: "bg-neutral-200", text: "" };
 
   return (
     <div className="space-y-1.5 pt-1.5">
@@ -65,13 +82,15 @@ function PasswordStrength({ password }: { password: string }) {
             key={i}
             className={cn(
               "h-1 flex-1 rounded-full transition-all duration-300",
-              i <= score ? barColor : "bg-neutral-200 dark:bg-neutral-700"
+              i <= score ? color.bar : "bg-neutral-200 dark:bg-neutral-700"
             )}
           />
         ))}
       </div>
       {label && (
-        <p className={cn("text-xs font-medium", textColor)}>{label} password</p>
+        <p className={cn("text-xs font-medium", color.text)}>
+          {label} {t("password_strength.suffix")}
+        </p>
       )}
     </div>
   );
@@ -137,7 +156,7 @@ export function SignupForm() {
                   <div className="relative">
                     <User className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400 dark:text-neutral-500" />
                     <AuthInput
-                      placeholder="John Doe"
+                      placeholder={t("placeholder_name")}
                       {...field}
                       autoComplete="name"
                       aria-invalid={!!fieldState.error}
@@ -163,7 +182,7 @@ export function SignupForm() {
                   <div className="relative">
                     <Mail className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400 dark:text-neutral-500" />
                     <AuthInput
-                      placeholder="name@example.com"
+                      placeholder={t("placeholder_email")}
                       {...field}
                       autoComplete="email"
                       inputMode="email"
@@ -191,7 +210,7 @@ export function SignupForm() {
                     <Lock className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400 dark:text-neutral-500" />
                     <AuthInput
                       type={showPassword ? "text" : "password"}
-                      placeholder="Min. 8 characters"
+                      placeholder={t("placeholder_password_min")}
                       {...field}
                       autoComplete="new-password"
                       aria-invalid={!!fieldState.error}
@@ -228,7 +247,7 @@ export function SignupForm() {
                     <ShieldCheck className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400 dark:text-neutral-500" />
                     <AuthInput
                       type={showConfirm ? "text" : "password"}
-                      placeholder="Repeat your password"
+                      placeholder={t("placeholder_confirm_password")}
                       {...field}
                       autoComplete="new-password"
                       aria-invalid={!!fieldState.error}

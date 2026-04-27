@@ -92,7 +92,7 @@ export function AppSidebar() {
       </SidebarHeader>
 
       <SidebarContent className="min-h-0 gap-0">
-        <ScrollArea className="h-[calc(100svh-8.5rem)] pe-1 sm:h-[calc(100vh-9rem)]">
+        <ScrollArea className="flex-1 pe-1">
           <div className="flex flex-col gap-4 pb-4">
             {isAdmin ? (
               <SidebarGroup className="p-2">

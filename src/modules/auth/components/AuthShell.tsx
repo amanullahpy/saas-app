@@ -10,6 +10,7 @@ import { appConfig } from "@/config/app.config";
 // ─── Brand panel ───────────────────────────────────────────────────────────────
 function BrandPanel() {
   const tc = useTranslations("common");
+  const t = useTranslations("shell");
 
   return (
     <aside
@@ -51,32 +52,32 @@ function BrandPanel() {
         <div className="space-y-4">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            <span className="text-xs font-medium text-white/80">Trusted by 10,000+ teams</span>
+            <span className="text-xs font-medium text-white/80">{t("trusted_by")}</span>
           </div>
           <h2 className="text-3xl font-bold leading-snug tracking-tight text-white lg:text-4xl">
-            Build something<br />
-            <span className="text-white/50">remarkable.</span>
+            {t("hero_title")}<br />
+            <span className="text-white/50">{t("hero_subtitle")}</span>
           </h2>
           <p className="max-w-[280px] text-sm leading-relaxed text-white/55">
-            A modern multi-tenant SaaS platform built for teams that move fast and ship with confidence.
+            {t("hero_description")}
           </p>
         </div>
 
         {/* Feature bullets */}
         <ul className="space-y-3.5">
           {[
-            "Multi-tenant workspace management",
-            "Role-based access control (RBAC)",
-            "Real-time analytics & insights",
-            "Enterprise-grade security",
-          ].map((item) => (
-            <li key={item} className="flex items-center gap-3 text-sm text-white/65">
+            "multi_tenant",
+            "rbac",
+            "realtime",
+            "security",
+          ].map((key) => (
+            <li key={key} className="flex items-center gap-3 text-sm text-white/65">
               <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/15 ring-1 ring-white/10">
                 <svg className="h-2.5 w-2.5 text-white" fill="none" viewBox="0 0 10 10" aria-hidden>
                   <path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
-              {item}
+              {t(`features.${key}`)}
             </li>
           ))}
         </ul>
@@ -84,15 +85,15 @@ function BrandPanel() {
         {/* Testimonial */}
         <div className="rounded-2xl bg-white/[0.07] p-4 ring-1 ring-white/10">
           <p className="text-sm italic leading-relaxed text-white/60">
-            "Saved us weeks of setup. The multi-tenant architecture just works out of the box."
+            {t("testimonial.quote")}
           </p>
           <div className="mt-3 flex items-center gap-2.5">
             <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 text-xs font-semibold text-white">
-              S
+              {t("testimonial.author").charAt(0)}
             </div>
             <div>
-              <p className="text-xs font-medium text-white/80">Sarah K.</p>
-              <p className="text-[11px] text-white/45">CTO, Acme Corp</p>
+              <p className="text-xs font-medium text-white/80">{t("testimonial.author")}</p>
+              <p className="text-[11px] text-white/45">{t("testimonial.role")}</p>
             </div>
           </div>
         </div>
@@ -101,7 +102,7 @@ function BrandPanel() {
       {/* Footer */}
       <div className="relative z-10">
         <p className="text-xs text-white/30">
-          © {new Date().getFullYear()} {appConfig.name}. All rights reserved.
+          © {new Date().getFullYear()} {appConfig.name}. {t("copyright")}
         </p>
       </div>
     </aside>

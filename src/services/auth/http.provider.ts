@@ -1,29 +1,78 @@
+import { supabase } from "@/lib/supabase";
 import { clearSessionStorage } from "./session.storage";
-import type { AuthClient, AuthResult, SignInCredentials, SignUpCredentials } from "./types";
+import type { AuthClient, AuthResult, SignInCredentials, SignUpCredentials, UserProfile } from "./types";
 
-/**
- * Replace this implementation with Supabase, REST, or tRPC calls.
- * `getAuthClient()` returns this when `NEXT_PUBLIC_AUTH_DRIVER=http`.
- */
 export const httpAuthClient: AuthClient = {
-  async signIn(_creds: SignInCredentials): Promise<AuthResult> {
-    return {
-      ok: false,
-      errorCode: "NOT_IMPLEMENTED",
-      message: "Wire your API in src/services/auth/http.provider.ts (signIn).",
+  async signIn({ email, password }: SignInCredentials): Promise<AuthResult> {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      return {
+        ok: false,
+        errorCode: error.status === 400 ? "INVALID_CREDENTIALS" : "UNKNOWN",
+        message: error.message,
+      };
+    }
+
+    if (!data.user) {
+      return { ok: false, errorCode: "UNKNOWN" };
+    }
+
+    // Fetch profile from our public.profiles table
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("*")
+      .eq("id", data.user.id)
+      .single();
+
+    const user: UserProfile = {
+      id: data.user.id,
+      email: data.user.email || "",
+      name: profile?.name || data.user.user_metadata?.name || "User",
+      avatar: profile?.avatar_url || data.user.user_metadata?.avatar_url || "",
+      role: (profile?.role as any) || "user",
     };
+
+    return { ok: true, user };
   },
 
-  async signUp(_creds: SignUpCredentials): Promise<AuthResult> {
-    return {
-      ok: false,
-      errorCode: "NOT_IMPLEMENTED",
-      message: "Wire your API in src/services/auth/http.provider.ts (signUp).",
+  async signUp({ email, password, name }: SignUpCredentials): Promise<AuthResult> {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { name },
+      },
+    });
+
+    if (error) {
+      return {
+        ok: false,
+        errorCode: error.status === 400 ? "EMAIL_EXISTS" : "UNKNOWN",
+        message: error.message,
+      };
+    }
+
+    if (!data.user) {
+      return { ok: false, errorCode: "UNKNOWN" };
+    }
+
+    const user: UserProfile = {
+      id: data.user.id,
+      email: data.user.email || "",
+      name: name,
+      avatar: "",
+      role: "user",
     };
+
+    return { ok: true, user };
   },
 
-  signOut() {
+  async signOut() {
+    await supabase.auth.signOut();
     clearSessionStorage();
-    /* revoke refresh tokens / Supabase signOut here */
   },
 };

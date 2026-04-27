@@ -226,7 +226,45 @@
     "toast_signup_success": "اکاؤنٹ بن گیا۔ خوش آمدید!",
     "toast_forgot_success": "اگر وہ ای میل موجود ہے تو ہم نے ہدایات بھیج دی ہیں۔",
     "toast_reset_success": "پاس ورڈ اپ ڈیٹ۔ نئے پاس ورڈ سے سائن ان کریں۔",
-    "toast_reset_no_token": "ای میل والے ری سیٹ لنک سے یہ صفحہ کھولیں جس میں ٹوکن ہو۔"
+    "toast_reset_no_token": "ای میل والے ری سیٹ لنک سے یہ صفحہ کھولیں جس میں ٹوکن ہو۔",
+    "placeholder_name": "جان ڈو",
+    "placeholder_email": "name@example.com",
+    "placeholder_password": "••••••••",
+    "placeholder_password_min": "کم از کم 8 حروف",
+    "placeholder_confirm_password": "پاس ورڈ دوبارہ درج کریں",
+    "forgot_success_title": "اپنا ان باکس چیک کریں",
+    "forgot_success_description": "اگر وہ ای میل ہمارے سسٹم میں موجود ہے تو ہم نے ری سیٹ کی ہدایات بھیج دی ہیں۔ اپنا اسپیم فولڈر چیک کرنا نہ بھولیں۔",
+    "try_different_email": "مختلف ای میل آزمائیں",
+    "request_new_link": "نیا لنک منگوائیں",
+    "reset_success_title": "پاس ورڈ اپ ڈیٹ ہو گیا",
+    "reset_success_description": "اب آپ اپنے نئے پاس ورڈ کے ساتھ سائن ان کر سکتے ہیں۔",
+    "placeholder_new_password": "نیا پاس ورڈ",
+    "placeholder_confirm_new_password": "نئے پاس ورڈ کی تصدیق",
+    "password_strength": {
+      "weak": "کمزور",
+      "fair": "مناسب",
+      "good": "بہتر",
+      "strong": "مضبوط",
+      "suffix": "پاس ورڈ"
+    }
+  },
+  "shell": {
+    "trusted_by": "10,000+ ٹیموں کا بھروسہ",
+    "hero_title": "کچھ بہترین",
+    "hero_subtitle": "بنائیں۔",
+    "hero_description": "ایک جدید ملٹی ٹیننٹ SaaS پلیٹ فارم جو ان ٹیموں کے لیے بنایا گیا ہے جو تیزی سے کام کرتی ہیں اور اعتماد کے ساتھ ڈیلیور کرتی ہیں۔",
+    "features": {
+      "multi_tenant": "ملٹی ٹیننٹ ورک اسپیس مینجمنٹ",
+      "rbac": "رول بیسڈ ایکسیس کنٹرول (RBAC)",
+      "realtime": "ریئل ٹائم تجزیہ اور بصیرت",
+      "security": "انٹرپرائز لیول سیکیورٹی"
+    },
+    "testimonial": {
+      "quote": "\"اس نے ہمارے ہفتوں کا کام بچا لیا۔ ملٹی ٹیننٹ آرکیٹیکچر بالکل ٹھیک کام کرتا ہے۔\"",
+      "author": "سارہ کے۔",
+      "role": "سی ٹی او، ایکمی کارپوریشن"
+    },
+    "copyright": "جملہ حقوق محفوظ ہیں۔"
   },
   "ui": {
     "actions": {

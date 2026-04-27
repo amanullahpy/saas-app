@@ -74,13 +74,13 @@ export function AdminSidebar() {
 
   return (
     <Sidebar side={isRtl ? "right" : "left"} dir={isRtl ? "rtl" : "ltr"} collapsible="icon" className="bg-sidebar/95">
-      <SidebarHeader className="flex h-14 shrink-0 flex-col gap-2 border-b border-border/60 px-2 py-2 sm:h-auto sm:min-h-16 sm:py-3">
+      <SidebarHeader className="flex shrink-0 flex-col gap-2 border-b border-border/60 px-2 py-2 min-h-14 sm:min-h-16 sm:py-3">
         <div className="flex items-center gap-2 group-data-[collapsible=icon]:justify-center">
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/90 text-sm font-semibold text-primary-foreground">
             <Shield className="size-4 stroke-[1.75]" aria-hidden />
           </div>
           <div className="min-w-0 group-data-[collapsible=icon]:hidden">
-            <span className="block truncate text-xs font-medium tracking-wide text-muted-foreground uppercase">
+            <span className="block truncate text-[10px] font-medium tracking-wide text-muted-foreground uppercase sm:text-xs">
               {t("admin_console_badge")}
             </span>
             <span className="truncate text-lg font-semibold tracking-tight sm:text-xl">{appConfig.name}</span>
@@ -99,7 +99,7 @@ export function AdminSidebar() {
       </SidebarHeader>
 
       <SidebarContent className="min-h-0 gap-0">
-        <ScrollArea className="h-[calc(100svh-8.5rem)] pe-1 sm:h-[calc(100vh-9rem)]">
+        <ScrollArea className="flex-1 pe-1">
           <div className="flex flex-col gap-4 pb-4">
             {adminConsoleSidebarSections.map((section) => (
               <SidebarGroup key={section.id} className="p-2">
