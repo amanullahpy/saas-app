@@ -124,7 +124,11 @@ export function TenantsClient({ initialTenants }: { initialTenants: Tenant[] }) 
               </div>
             </div>
           ))}
-          {filtered.length === 0 && <p className="px-6 py-8 text-center text-sm text-muted-foreground">No tenants match your search.</p>}
+          {filtered.length === 0 && (
+            <p className="px-6 py-8 text-center text-sm text-muted-foreground">
+              {tenants.length === 0 ? "No tenants yet. Create your first tenant to get started." : "No tenants match your search."}
+            </p>
+          )}
         </div>
       </Card>
 

@@ -117,11 +117,38 @@ function SkillGroup({
 
 // ─── Main component ────────────────────────────────────────────────────────────
 
-export function SkillsSettings() {
-  const t = useTranslations("settings.skills");
+interface Props {
+  initialFrontend: string[];
+  initialFullstack: string[];
+  userId: string | null;
+}
 
-  const [frontendSkills, setFrontendSkills] = useState<string[]>(DEFAULT_FRONTEND_SKILLS);
-  const [fullstackSkills, setFullstackSkills] = useState<string[]>(DEFAULT_FULLSTACK_SKILLS);
+export function SkillsSettings({ initialFrontend, initialFullstack, userId }: Props) {
+  const t = useTranslations("settings.skills");
+  const [saving, setSaving] = useState(false);
+
+  const [frontendSkills, setFrontendSkills] = useState<string[]>(initialFrontend);
+  const [fullstackSkills, setFullstackSkills] = useState<string[]>(initialFullstack);
+
+  async function handleSave() {
+    if (!userId) return;
+    setSaving(true);
+    try {
+      const res = await fetch("/api/settings/skills", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, frontendSkills, fullstackSkills }),
+      });
+      if (res.ok) {
+        // toast would go here if imported
+        console.log("Skills saved");
+      }
+    } catch {
+      console.error("Failed to save skills");
+    } finally {
+      setSaving(false);
+    }
+  }
 
   return (
     <div className="space-y-6">
@@ -144,12 +171,10 @@ export function SkillsSettings() {
         <Button
           type="button"
           className="h-11 px-8 rounded-xl"
-          onClick={() => {
-            // Wire to your API / Redux when backend is ready
-            console.log({ frontendSkills, fullstackSkills });
-          }}
+          onClick={handleSave}
+          disabled={saving || !userId}
         >
-          {t("save")}
+          {saving ? "Saving…" : t("save")}
         </Button>
       </div>
     </div>

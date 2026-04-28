@@ -111,7 +111,11 @@ export function UsersClient({ initialUsers }: { initialUsers: AdminUser[] }) {
               </div>
             </div>
           ))}
-          {filtered.length === 0 && <p className="px-6 py-8 text-center text-sm text-muted-foreground">No users match your search.</p>}
+          {filtered.length === 0 && (
+            <p className="px-6 py-8 text-center text-sm text-muted-foreground">
+              {users.length === 0 ? "No users found." : "No users match your search."}
+            </p>
+          )}
         </div>
       </Card>
 

@@ -2,6 +2,9 @@ import { ProfileSettings } from "@/modules/settings/components/ProfileSettings";
 import { PreferencesSettings } from "@/modules/settings/components/PreferencesSettings";
 import { setRequestLocale } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
+import { getUserProfile } from "@/services/settings";
+import { getCurrentUserId } from "@/lib/auth-server";
+import { authConfig } from "@/config/auth";
 
 export default async function SettingsPage({
   params,
@@ -12,6 +15,14 @@ export default async function SettingsPage({
   setRequestLocale(locale);
   const t = await getTranslations("settings");
 
+  let profile = null;
+  if (authConfig.driver === "http") {
+    const userId = await getCurrentUserId();
+    if (userId) {
+      profile = await getUserProfile(userId);
+    }
+  }
+
   return (
     <>
       <div>
@@ -20,7 +31,7 @@ export default async function SettingsPage({
       </div>
 
       <div className="grid gap-6">
-        <ProfileSettings />
+        <ProfileSettings profile={profile} />
         <PreferencesSettings />
       </div>
     </>

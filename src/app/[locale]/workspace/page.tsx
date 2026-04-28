@@ -4,10 +4,31 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { setRequestLocale } from "next-intl/server";
 import { Building2, Users, CreditCard, ShieldCheck, Zap, Globe, ArrowRight, CheckCircle2 } from "lucide-react";
+import { getWorkspaceInfo } from "@/services/workspace";
+import { authConfig } from "@/config/auth";
 
 export default async function WorkspacePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
+
+  const workspace = authConfig.driver === "http" ? await getWorkspaceInfo() : null;
+
+  const overviewItems = [
+    { label: "Plan",         value: workspace?.plan ?? "—",                                icon: Zap,        color: "text-amber-500" },
+    { label: "Members",      value: workspace ? `${workspace.memberCount} members` : "—",  icon: Users,      color: "text-blue-500" },
+    { label: "Region",       value: workspace?.region ?? "—",                              icon: Globe,      color: "text-purple-500" },
+    { label: "SSO",          value: "Configured",                                          icon: ShieldCheck,color: "text-emerald-500" },
+  ];
+
+  const workspaceRows = workspace
+    ? [
+        { label: "Workspace Name", value: workspace.name },
+        { label: "Tenant ID",      value: workspace.tenantId },
+        { label: "Region",         value: workspace.region },
+        { label: "Created",        value: workspace.createdAt },
+        { label: "Plan",           value: workspace.plan },
+      ]
+    : [];
 
   return (
     <MainShell>
@@ -23,14 +44,8 @@ export default async function WorkspacePage({ params }: { params: Promise<{ loca
           </Badge>
         </div>
 
-        {/* Workspace overview */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { label: "Plan", value: "Pro", icon: Zap, color: "text-amber-500" },
-            { label: "Members", value: "12 / 20", icon: Users, color: "text-blue-500" },
-            { label: "Storage Used", value: "4.2 GB / 10 GB", icon: Globe, color: "text-purple-500" },
-            { label: "SSO", value: "Enabled", icon: ShieldCheck, color: "text-emerald-500" },
-          ].map((item) => (
+          {overviewItems.map((item) => (
             <Card key={item.label} className="border-none shadow-sm bg-card hover:shadow-md transition-shadow">
               <CardContent className="flex items-center gap-4 pt-5">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-muted">
@@ -46,7 +61,6 @@ export default async function WorkspacePage({ params }: { params: Promise<{ loca
         </div>
 
         <div className="grid gap-6 lg:grid-cols-3">
-          {/* Tenant info */}
           <Card className="lg:col-span-2 border-none shadow-sm bg-card">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">
@@ -56,32 +70,29 @@ export default async function WorkspacePage({ params }: { params: Promise<{ loca
               <CardDescription>Tenant-scoped data and permissions</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              {[
-                { label: "Workspace Name", value: "Acme Corp" },
-                { label: "Tenant ID", value: "ten_01hx9k2m3n4p5q6r7s8t" },
-                { label: "Region", value: "US East (N. Virginia)" },
-                { label: "Created", value: "January 12, 2024" },
-                { label: "Owner", value: "john@acmecorp.com" },
-              ].map((row) => (
-                <div key={row.label} className="flex items-center justify-between border-b border-border/50 pb-3 last:border-0 last:pb-0">
-                  <span className="text-sm text-muted-foreground">{row.label}</span>
-                  <span className="text-sm font-medium text-foreground">{row.value}</span>
-                </div>
-              ))}
+              {workspaceRows.length === 0 ? (
+                <p className="text-sm text-muted-foreground text-center py-4">No workspace data available.</p>
+              ) : (
+                workspaceRows.map((row) => (
+                  <div key={row.label} className="flex items-center justify-between border-b border-border/50 pb-3 last:border-0 last:pb-0">
+                    <span className="text-sm text-muted-foreground">{row.label}</span>
+                    <span className="text-sm font-medium text-foreground font-mono text-right max-w-[60%] truncate">{row.value}</span>
+                  </div>
+                ))
+              )}
             </CardContent>
           </Card>
 
-          {/* Quick actions */}
           <Card className="border-none shadow-sm bg-card">
             <CardHeader>
               <CardTitle className="text-base">Quick Actions</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
               {[
-                { label: "Invite a member", icon: Users },
-                { label: "Manage billing", icon: CreditCard },
+                { label: "Invite a member",   icon: Users },
+                { label: "Manage billing",    icon: CreditCard },
                 { label: "Security settings", icon: ShieldCheck },
-                { label: "View audit log", icon: CheckCircle2 },
+                { label: "View audit log",    icon: CheckCircle2 },
               ].map((action) => (
                 <Button key={action.label} variant="ghost" className="w-full justify-between h-10 px-3 rounded-xl text-sm">
                   <span className="flex items-center gap-2">

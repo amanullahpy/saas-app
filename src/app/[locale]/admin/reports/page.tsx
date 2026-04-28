@@ -1,17 +1,68 @@
 import { setRequestLocale } from "next-intl/server";
 import { ReportsClient, type Report } from "@/modules/admin/ReportsClient";
-
-const REPORTS: Report[] = [
-  { name:"Monthly Revenue Report",   desc:"MRR, ARR, churn, and expansion revenue breakdown.",       iconName:"TrendingUp", color:"text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30", generated:"Apr 1, 2026", size:"1.2 MB", module:"admin-revenue",    columns:["Month","MRR","ARR","Churn %","New MRR"],                rows:[{Month:"Apr 2026",MRR:"$18,430",ARR:"$221,160","Churn %":"2.1%","New MRR":"$2,100"},{Month:"Mar 2026",MRR:"$16,400",ARR:"$196,800","Churn %":"2.4%","New MRR":"$1,800"}] },
-  { name:"User Growth Report",        desc:"New signups, activation rates, and retention cohorts.",   iconName:"Users",      color:"text-blue-600 bg-blue-50 dark:bg-blue-950/30",           generated:"Apr 1, 2026", size:"840 KB", module:"admin-users-growth",columns:["Month","New Users","Activated","Retained","Churned"],    rows:[{Month:"Apr 2026","New Users":234,Activated:198,Retained:180,Churned:12},{Month:"Mar 2026","New Users":210,Activated:175,Retained:160,Churned:15}] },
-  { name:"Tenant Activity Report",    desc:"Per-tenant usage, seat utilization, and feature adoption.",iconName:"Building2",  color:"text-purple-600 bg-purple-50 dark:bg-purple-950/30",     generated:"Apr 1, 2026", size:"2.1 MB", module:"admin-tenants-activity",columns:["Tenant","Plan","Members","Storage Used","Last Active"],rows:[{Tenant:"Acme Corp",Plan:"Pro",Members:12,"Storage Used":"4.2 GB","Last Active":"Today"},{Tenant:"Globex Inc",Plan:"Enterprise",Members:48,"Storage Used":"18 GB","Last Active":"Today"}] },
-  { name:"Billing & Invoices Export", desc:"All invoices, payment statuses, and failed charges.",     iconName:"CreditCard", color:"text-amber-600 bg-amber-50 dark:bg-amber-950/30",         generated:"Apr 1, 2026", size:"560 KB", module:"admin-billing",    columns:["Invoice","Tenant","Amount","Status","Date"],             rows:[{"Invoice":"INV-2026-04",Tenant:"Acme Corp",Amount:"$29.00",Status:"Paid",Date:"Apr 1, 2026"},{"Invoice":"INV-2026-04",Tenant:"Globex Inc",Amount:"$99.00",Status:"Paid",Date:"Apr 1, 2026"}] },
-  { name:"Feature Usage Analytics",   desc:"Which features are used most across all tenants.",        iconName:"BarChart2",  color:"text-cyan-600 bg-cyan-50 dark:bg-cyan-950/30",             generated:"Mar 1, 2026", size:"1.8 MB", module:"admin-features",   columns:["Feature","Usage Count","Unique Tenants","Avg / Tenant"], rows:[{Feature:"Dashboard",  "Usage Count":12400,"Unique Tenants":142,"Avg / Tenant":87},{Feature:"Analytics","Usage Count":8200,"Unique Tenants":98,"Avg / Tenant":84}] },
-  { name:"Compliance & Audit Export", desc:"Full audit trail export for compliance and SIEM.",        iconName:"FileText",   color:"text-rose-600 bg-rose-50 dark:bg-rose-950/30",             generated:"Mar 1, 2026", size:"4.3 MB", module:"admin-audit-export",columns:["Action","Actor","Tenant","IP","Time","Severity"],        rows:[{Action:"Tenant suspended",Actor:"admin@platform.io",Tenant:"Umbrella Co",IP:"10.0.0.1",Time:"Apr 19, 2026",Severity:"critical"}] },
-];
+import { getAdminStats } from "@/services/admin/stats";
+import { authConfig } from "@/config/auth";
 
 export default async function AdminReportsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <div className="mx-auto max-w-5xl space-y-6 pb-8"><ReportsClient reports={REPORTS} /></div>;
+
+  const stats = authConfig.driver === "http" ? await getAdminStats() : null;
+
+  const REPORTS: Report[] = [
+    {
+      name: "Monthly Revenue Report",
+      desc: "MRR, ARR, churn, and expansion revenue breakdown.",
+      iconName: "TrendingUp",
+      color: "text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30",
+      generated: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+      size: "—",
+      module: "admin-revenue",
+      columns: ["Metric", "Value"],
+      rows: [
+        { Metric: "MRR", Value: stats?.mrr ?? "—" },
+        { Metric: "Total Tenants", Value: String(stats?.totalTenants ?? "—") },
+        { Metric: "Total Users", Value: String(stats?.totalUsers ?? "—") },
+      ],
+    },
+    {
+      name: "User Growth Report",
+      desc: "New signups, activation rates, and retention cohorts.",
+      iconName: "Users",
+      color: "text-blue-600 bg-blue-50 dark:bg-blue-950/30",
+      generated: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+      size: "—",
+      module: "admin-users-growth",
+      columns: ["Metric", "Value"],
+      rows: [{ Metric: "Total Users", Value: String(stats?.totalUsers ?? "—") }],
+    },
+    {
+      name: "Tenant Activity Report",
+      desc: "Per-tenant usage, seat utilization, and feature adoption.",
+      iconName: "Building2",
+      color: "text-purple-600 bg-purple-50 dark:bg-purple-950/30",
+      generated: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+      size: "—",
+      module: "admin-tenants-activity",
+      columns: ["Metric", "Value"],
+      rows: [{ Metric: "Total Tenants", Value: String(stats?.totalTenants ?? "—") }],
+    },
+    {
+      name: "Compliance & Audit Export",
+      desc: "Full audit trail export for compliance and SIEM.",
+      iconName: "FileText",
+      color: "text-rose-600 bg-rose-50 dark:bg-rose-950/30",
+      generated: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+      size: "—",
+      module: "admin-audit-export",
+      columns: ["Note"],
+      rows: [{ Note: "Run from Audit Log page for full export." }],
+    },
+  ];
+
+  return (
+    <div className="mx-auto max-w-5xl space-y-6 pb-8">
+      <ReportsClient reports={REPORTS} stats={stats} />
+    </div>
+  );
 }

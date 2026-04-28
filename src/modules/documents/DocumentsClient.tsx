@@ -131,7 +131,11 @@ export function DocumentsClient({ initialDocs }: { initialDocs: Doc[] }) {
               </div>
             );
           })}
-          {filtered.length === 0 && <p className="px-5 py-8 text-center text-sm text-muted-foreground">No files match your search.</p>}
+          {filtered.length === 0 && (
+            <p className="px-5 py-8 text-center text-sm text-muted-foreground">
+              {docs.length === 0 ? "No files yet. Upload your first file to get started." : "No files match your search."}
+            </p>
+          )}
         </div>
       </Card>
 

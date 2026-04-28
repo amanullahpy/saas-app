@@ -100,41 +100,49 @@ export function ProjectsClient({ initialProjects }: { initialProjects: Project[]
 
       {/* Cards */}
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-        {projects.map(project => {
-          const pct = project.tasks > 0 ? Math.round((project.done / project.tasks) * 100) : 0;
-          return (
-            <Card key={project.name} className="border-none shadow-sm bg-card hover:shadow-md transition-shadow group">
-              <CardHeader className="pb-3">
-                <div className="flex items-start justify-between gap-2">
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className={`h-3 w-3 shrink-0 rounded-full ${project.color}`} />
-                    <CardTitle className="truncate text-sm font-semibold group-hover:text-primary transition-colors">{project.name}</CardTitle>
+        {projects.length === 0 ? (
+          <div className="col-span-full flex flex-col items-center justify-center rounded-2xl border border-dashed border-border py-16 text-center">
+            <FolderKanban className="mb-3 h-10 w-10 text-muted-foreground/40" />
+            <p className="text-sm font-medium text-muted-foreground">No projects yet</p>
+            <p className="mt-1 text-xs text-muted-foreground/70">Create your first project to get started.</p>
+          </div>
+        ) : (
+          projects.map(project => {
+            const pct = project.tasks > 0 ? Math.round((project.done / project.tasks) * 100) : 0;
+            return (
+              <Card key={project.name} className="border-none shadow-sm bg-card hover:shadow-md transition-shadow group">
+                <CardHeader className="pb-3">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className={`h-3 w-3 shrink-0 rounded-full ${project.color}`} />
+                      <CardTitle className="truncate text-sm font-semibold group-hover:text-primary transition-colors">{project.name}</CardTitle>
+                    </div>
+                    <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-medium ${STATUS_STYLES[project.status]}`}>{project.status}</span>
                   </div>
-                  <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-medium ${STATUS_STYLES[project.status]}`}>{project.status}</span>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-1.5">
-                  <div className="flex justify-between text-xs text-muted-foreground">
-                    <span>{project.done} / {project.tasks} tasks</span><span>{pct}%</span>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-1.5">
+                    <div className="flex justify-between text-xs text-muted-foreground">
+                      <span>{project.done} / {project.tasks} tasks</span><span>{pct}%</span>
+                    </div>
+                    <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
+                      <div className={`h-full rounded-full transition-all ${project.color}`} style={{ width:`${pct}%` }} />
+                    </div>
                   </div>
-                  <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
-                    <div className={`h-full rounded-full transition-all ${project.color}`} style={{ width:`${pct}%` }} />
+                  <div className="flex items-center justify-between text-xs text-muted-foreground">
+                    <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> {project.members} {t("ui.labels.members").toLowerCase()}</span>
+                    <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {t("ui.labels.due_date")} {project.due}</span>
                   </div>
-                </div>
-                <div className="flex items-center justify-between text-xs text-muted-foreground">
-                  <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> {project.members} {t("ui.labels.members").toLowerCase()}</span>
-                  <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {t("ui.labels.due_date")} {project.due}</span>
-                </div>
-                <div className="flex items-center gap-1 pt-1 border-t border-border/40">
-                  <Button variant="ghost" size="sm" className="h-7 gap-1 rounded-lg text-xs text-muted-foreground hover:text-foreground" onClick={() => openDetail(project)}><Eye className="h-3.5 w-3.5" />{t("ui.actions.view")}</Button>
-                  <Button variant="ghost" size="sm" className="h-7 gap-1 rounded-lg text-xs text-muted-foreground hover:text-foreground" onClick={() => openEdit(project)}><Pencil className="h-3.5 w-3.5" />{t("ui.actions.edit")}</Button>
-                  <Button variant="ghost" size="sm" className="h-7 gap-1 rounded-lg text-xs text-muted-foreground hover:text-destructive ml-auto" onClick={() => openDelete(project)}><Trash2 className="h-3.5 w-3.5" />{t("ui.actions.delete")}</Button>
-                </div>
-              </CardContent>
-            </Card>
-          );
-        })}
+                  <div className="flex items-center gap-1 pt-1 border-t border-border/40">
+                    <Button variant="ghost" size="sm" className="h-7 gap-1 rounded-lg text-xs text-muted-foreground hover:text-foreground" onClick={() => openDetail(project)}><Eye className="h-3.5 w-3.5" />{t("ui.actions.view")}</Button>
+                    <Button variant="ghost" size="sm" className="h-7 gap-1 rounded-lg text-xs text-muted-foreground hover:text-foreground" onClick={() => openEdit(project)}><Pencil className="h-3.5 w-3.5" />{t("ui.actions.edit")}</Button>
+                    <Button variant="ghost" size="sm" className="h-7 gap-1 rounded-lg text-xs text-muted-foreground hover:text-destructive ml-auto" onClick={() => openDelete(project)}><Trash2 className="h-3.5 w-3.5" />{t("ui.actions.delete")}</Button>
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })
+        )}
       </div>
 
       {/* Add Modal */}

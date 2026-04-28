@@ -191,7 +191,9 @@ export function TeamClient({ initialMembers }: { initialMembers: Member[] }) {
           </Card>
         ))}
         {filtered.length === 0 && (
-          <p className="col-span-full py-8 text-center text-sm text-muted-foreground">No members match your search.</p>
+          <p className="col-span-full py-8 text-center text-sm text-muted-foreground">
+            {members.length === 0 ? "No team members yet. Invite someone to get started." : "No members match your search."}
+          </p>
         )}
       </div>
 

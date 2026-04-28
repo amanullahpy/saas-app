@@ -2,6 +2,8 @@ import { MainShell } from "@/ui/layout/MainShell";
 import { PricingPlans } from "@/modules/billing/components/PricingPlans";
 import { PaymentHistory } from "@/modules/billing/components/PaymentHistory";
 import { setRequestLocale } from "next-intl/server";
+import { getBillingInvoices } from "@/services/billing";
+import { authConfig } from "@/config/auth";
 
 export default async function BillingPage({
   params,
@@ -10,6 +12,8 @@ export default async function BillingPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+
+  const invoices = authConfig.driver === "http" ? await getBillingInvoices() : [];
 
   return (
     <MainShell>
@@ -22,7 +26,7 @@ export default async function BillingPage({
             Manage your subscription plans and view payment history.
           </p>
         </div>
-        
+
         <div className="space-y-6">
           <h3 className="text-lg font-semibold">Available Plans</h3>
           <PricingPlans />
@@ -30,7 +34,7 @@ export default async function BillingPage({
 
         <div className="space-y-6">
           <h3 className="text-lg font-semibold">Invoices</h3>
-          <PaymentHistory />
+          <PaymentHistory invoices={invoices} />
         </div>
       </div>
     </MainShell>

@@ -103,7 +103,10 @@ export function MembersClient({ initialMembers }: { initialMembers: TenantMember
           <CardDescription>{members.length} members in this tenant</CardDescription>
         </CardHeader>
         <div className="divide-y divide-border/50">
-          {members.map(m => {
+          {members.length === 0 ? (
+            <p className="px-6 py-8 text-center text-sm text-muted-foreground">No members yet. Invite someone to get started.</p>
+          ) : (
+            members.map(m => {
             const RoleIcon = ROLE_ICON[m.role];
             return (
               <div key={m.email} className="flex items-center gap-4 px-6 py-3.5 hover:bg-muted/30 transition-colors group">
@@ -125,7 +128,8 @@ export function MembersClient({ initialMembers }: { initialMembers: TenantMember
                 </div>
               </div>
             );
-          })}
+          })
+          )}
         </div>
       </Card>
 

@@ -64,7 +64,10 @@ export function AuditClient({ events, module, title }: Props) {
           <CardDescription>Last 30 days · {events.length} events</CardDescription>
         </CardHeader>
         <div className="divide-y divide-border/50">
-          {events.map(e => {
+          {events.length === 0 ? (
+            <p className="px-6 py-8 text-center text-sm text-muted-foreground">No audit events yet.</p>
+          ) : (
+            events.map(e => {
             const Icon = ICON_MAP[e.iconName] ?? ShieldCheck;
             return (
               <button key={e.id} className="flex w-full items-start gap-4 px-6 py-3.5 text-left hover:bg-muted/30 transition-colors"
@@ -87,7 +90,8 @@ export function AuditClient({ events, module, title }: Props) {
                 </div>
               </button>
             );
-          })}
+          })
+          )}
         </div>
       </Card>
 

@@ -104,7 +104,10 @@ export function ApiKeysClient({ initialKeys }: { initialKeys: ApiKey[] }) {
           <CardDescription>Rotate regularly — never expose plaintext after creation</CardDescription>
         </CardHeader>
         <div className="divide-y divide-border/50">
-          {keys.map(k => (
+          {keys.length === 0 ? (
+            <p className="px-6 py-8 text-center text-sm text-muted-foreground">No API keys yet. Create your first key to get started.</p>
+          ) : (
+            keys.map(k => (
             <div key={k.name} className="flex items-center gap-4 px-6 py-4 hover:bg-muted/30 transition-colors">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-muted"><Key className="h-4 w-4 text-muted-foreground" /></div>
               <div className="min-w-0 flex-1">
@@ -121,7 +124,8 @@ export function ApiKeysClient({ initialKeys }: { initialKeys: ApiKey[] }) {
                 <Button variant="ghost" size="icon" className="h-8 w-8 rounded-lg text-muted-foreground hover:text-destructive" title="Revoke" onClick={() => { setSelected(k); setDeleteOpen(true); }}><Trash2 className="h-3.5 w-3.5" /></Button>
               </div>
             </div>
-          ))}
+          ))
+          )}
         </div>
       </Card>
 

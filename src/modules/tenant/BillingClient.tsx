@@ -87,7 +87,10 @@ export function BillingClient({ initialInvoices }: { initialInvoices: Invoice[] 
           <ReportDownloader config={reportConfig} label="Export" />
         </CardHeader>
         <div className="divide-y divide-border/50">
-          {invoices.map(inv => (
+          {invoices.length === 0 ? (
+            <p className="px-6 py-8 text-center text-sm text-muted-foreground">No invoices yet.</p>
+          ) : (
+            invoices.map(inv => (
             <div key={inv.id} className="flex items-center gap-4 px-6 py-3.5 hover:bg-muted/30 transition-colors group">
               <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-muted">
                 <CreditCard className="h-4 w-4 text-muted-foreground" />
@@ -105,7 +108,8 @@ export function BillingClient({ initialInvoices }: { initialInvoices: Invoice[] 
                 View
               </Button>
             </div>
-          ))}
+          ))
+          )}
         </div>
       </Card>
 

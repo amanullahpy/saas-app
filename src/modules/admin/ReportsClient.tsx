@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { ReportDownloader, type ReportConfig } from "@/components/ReportDownloader";
 import { TrendingUp, Users, Building2, CreditCard, BarChart2, FileText, type LucideIcon } from "lucide-react";
 
+import type { AdminStats } from "@/services/admin/stats";
+
 const ICON_MAP: Record<string, LucideIcon> = { TrendingUp, Users, Building2, CreditCard, BarChart2, FileText };
 
 export interface Report {
@@ -12,14 +14,13 @@ export interface Report {
   columns: string[]; rows: Record<string, string | number>[];
 }
 
-const METRICS = [
-  { label:"MRR",                  value:"$18,430",  change:"+12.4%", up:true  },
-  { label:"ARR",                  value:"$221,160", change:"+12.4%", up:true  },
-  { label:"Churn Rate",           value:"2.1%",     change:"-0.3%",  up:false },
-  { label:"Avg Revenue / Tenant", value:"$129.79",  change:"+4.2%",  up:true  },
-];
-
-export function ReportsClient({ reports }: { reports: Report[] }) {
+export function ReportsClient({ reports, stats }: { reports: Report[]; stats: AdminStats | null }) {
+  const METRICS = [
+    { label: "MRR",                  value: stats?.mrr ?? "—",                        change: "", up: true  },
+    { label: "Total Tenants",        value: String(stats?.totalTenants ?? "—"),        change: "", up: true  },
+    { label: "Total Users",          value: String(stats?.totalUsers ?? "—"),          change: "", up: true  },
+    { label: "Security Alerts",      value: String(stats?.securityAlerts ?? "—"),      change: "", up: false },
+  ];
   return (
     <>
       <div>
@@ -33,7 +34,6 @@ export function ReportsClient({ reports }: { reports: Report[] }) {
             <CardContent className="pt-5">
               <p className="text-xs text-muted-foreground">{m.label}</p>
               <p className="mt-1 text-2xl font-bold text-foreground">{m.value}</p>
-              <p className={`mt-0.5 text-xs font-medium ${m.up ? "text-emerald-600 dark:text-emerald-400" : "text-red-500"}`}>{m.change} vs last month</p>
             </CardContent>
           </Card>
         ))}
@@ -45,7 +45,10 @@ export function ReportsClient({ reports }: { reports: Report[] }) {
           <CardDescription>Download module-specific CSV reports with app branding</CardDescription>
         </CardHeader>
         <div className="divide-y divide-border/50">
-          {reports.map(r => {
+          {reports.length === 0 ? (
+            <p className="px-6 py-8 text-center text-sm text-muted-foreground">No reports available.</p>
+          ) : (
+            reports.map(r => {
             const Icon = ICON_MAP[r.iconName] ?? FileText;
             const config: ReportConfig = {
               module: r.module,
@@ -67,7 +70,8 @@ export function ReportsClient({ reports }: { reports: Report[] }) {
                 <ReportDownloader config={config} label="Download" variant="outline" size="sm" />
               </div>
             );
-          })}
+          })
+          )}
         </div>
       </Card>
     </>
