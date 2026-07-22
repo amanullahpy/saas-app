@@ -5,14 +5,32 @@ import { cn } from "@/lib/utils"
 function Card({
   className,
   size = "default",
+  variant = "default",
   ...props
-}: React.ComponentProps<"div"> & { size?: "default" | "sm" }) {
+}: React.ComponentProps<"div"> & { size?: "default" | "sm"; variant?: "default" | "elevated" | "featured" }) {
+  if (variant === "featured") {
+    return (
+      <div className="rounded-2xl bg-gradient-to-br from-[var(--brand,#0052FF)] via-[var(--brand-secondary,#4D7CFF)] to-[var(--brand,#0052FF)] p-[2px] shadow-accent transition-all duration-300 hover:shadow-accent-lg hover:-translate-y-1">
+        <div
+          data-slot="card"
+          data-size={size}
+          className={cn(
+            "group/card flex flex-col gap-4 overflow-hidden rounded-[calc(1rem-2px)] bg-card py-5 text-sm text-card-foreground has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3.5",
+            className
+          )}
+          {...props}
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       data-slot="card"
       data-size={size}
       className={cn(
-        "group/card flex flex-col gap-4 overflow-hidden rounded-xl bg-card py-4 text-sm text-card-foreground ring-1 ring-foreground/10 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",
+        "group/card flex flex-col gap-4 overflow-hidden rounded-2xl bg-card py-5 text-sm text-card-foreground border border-border/80 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-primary/20 hover:-translate-y-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3.5 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-2xl *:[img:last-child]:rounded-b-2xl",
+        variant === "elevated" && "shadow-md hover:shadow-2xl border-primary/20",
         className
       )}
       {...props}

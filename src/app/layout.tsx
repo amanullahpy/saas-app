@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Calistoga } from "next/font/google";
 import { appConfig } from "@/config/app.config";
 import "./globals.css";
 
@@ -10,6 +10,12 @@ const inter = Inter({
 
 const mono = JetBrains_Mono({
   variable: "--font-mono",
+  subsets: ["latin"],
+});
+
+const calistoga = Calistoga({
+  weight: "400",
+  variable: "--font-calistoga",
   subsets: ["latin"],
 });
 
@@ -27,7 +33,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html className={`${inter.variable} ${mono.variable} antialiased`} suppressHydrationWarning>
+    <html className={`${inter.variable} ${mono.variable} ${calistoga.variable} antialiased`} suppressHydrationWarning>
       <body className="min-h-screen bg-background text-foreground font-sans" suppressHydrationWarning>
         {children}
       </body>

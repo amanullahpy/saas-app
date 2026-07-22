@@ -6,6 +6,8 @@ import { LanguageSwitcher } from "@/ui/components/LanguageSwitcher";
 import { ThemeModeToggle } from "@/ui/components/ThemeModeToggle";
 import { useTranslations } from "next-intl";
 import { appConfig } from "@/config/app.config";
+import { SectionLabel } from "@/components/ui/section-label";
+import { ShieldCheck, Zap } from "lucide-react";
 
 // ─── Brand panel ───────────────────────────────────────────────────────────────
 function BrandPanel() {
@@ -15,67 +17,57 @@ function BrandPanel() {
   return (
     <aside
       aria-hidden="true"
-      className="relative hidden md:flex md:w-[44%] lg:w-[42%] xl:w-[40%] shrink-0 flex-col justify-between overflow-hidden bg-primary p-8 lg:p-12 xl:p-14"
+      className="relative hidden md:flex md:w-[44%] lg:w-[42%] xl:w-[45%] shrink-0 flex-col justify-between overflow-hidden bg-foreground p-8 lg:p-12 xl:p-14 text-background"
     >
-      {/* Background decoration */}
+      {/* Background dot pattern & ambient glow */}
       <div className="pointer-events-none absolute inset-0 select-none overflow-hidden">
-        {/* Large circles */}
-        <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-white/[0.04]" />
-        <div className="absolute -bottom-32 -right-32 h-[420px] w-[420px] rounded-full bg-white/[0.04]" />
-        {/* Dot grid */}
-        <svg className="absolute inset-0 h-full w-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="auth-dots" width="28" height="28" patternUnits="userSpaceOnUse">
-              <circle cx="1.5" cy="1.5" r="1.5" fill="white" fillOpacity="0.07" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#auth-dots)" />
-        </svg>
-        {/* Gradient overlay bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-primary/80 to-transparent" />
+        <div className="absolute inset-0 dot-pattern opacity-10 text-white" />
+        <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-primary/20 blur-[120px]" />
+        <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-brand-secondary/20 blur-[120px]" />
       </div>
 
       {/* Logo */}
       <div className="relative z-10">
         <Link href={ROUTES.HOME} className="group inline-flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/20 text-sm font-bold text-white ring-1 ring-white/20 transition-colors group-hover:bg-white/25">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#0052FF] to-[#4D7CFF] text-base font-bold text-white shadow-accent">
             {appConfig.name.charAt(0)}
           </div>
-          <span className="text-sm font-semibold text-white/90 group-hover:text-white transition-colors">
-            {tc("product_title")}
+          <span className="text-xl font-heading tracking-tight text-white group-hover:text-white/90 transition-colors">
+            {appConfig.name}
           </span>
         </Link>
       </div>
 
       {/* Center content */}
-      <div className="relative z-10 space-y-8">
-        <div className="space-y-4">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            <span className="text-xs font-medium text-white/80">{t("trusted_by")}</span>
+      <div className="relative z-10 space-y-8 max-w-md my-auto">
+        <div className="relative w-20 h-20 flex items-center justify-center">
+          <div className="absolute inset-0 rounded-full border border-dashed border-white/30 animate-[spin_60s_linear_infinite]" />
+          <div className="h-12 w-12 rounded-xl bg-gradient-to-tr from-[#0052FF] to-[#4D7CFF] flex items-center justify-center shadow-accent text-white">
+            <Zap className="h-6 w-6 stroke-[2]" />
           </div>
-          <h2 className="text-3xl font-bold leading-snug tracking-tight text-white lg:text-4xl">
-            {t("hero_title")}<br />
-            <span className="text-white/50">{t("hero_subtitle")}</span>
+        </div>
+
+        <div className="space-y-4">
+          <SectionLabel variant="dark">{t("trusted_by")}</SectionLabel>
+          <h2 className="text-3xl font-heading leading-[1.15] text-white lg:text-4xl">
+            {t("hero_title")} <span className="gradient-text">{t("hero_subtitle")}</span>
           </h2>
-          <p className="max-w-[280px] text-sm leading-relaxed text-white/55">
+          <p className="text-sm leading-relaxed text-white/70">
             {t("hero_description")}
           </p>
         </div>
 
         {/* Feature bullets */}
-        <ul className="space-y-3.5">
+        <ul className="space-y-3">
           {[
             "multi_tenant",
             "rbac",
             "realtime",
             "security",
           ].map((key) => (
-            <li key={key} className="flex items-center gap-3 text-sm text-white/65">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/15 ring-1 ring-white/10">
-                <svg className="h-2.5 w-2.5 text-white" fill="none" viewBox="0 0 10 10" aria-hidden>
-                  <path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+            <li key={key} className="flex items-center gap-3 text-sm text-white/80">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/25 border border-primary/40 text-primary">
+                <ShieldCheck className="h-3.5 w-3.5" />
               </span>
               {t(`features.${key}`)}
             </li>
@@ -83,25 +75,25 @@ function BrandPanel() {
         </ul>
 
         {/* Testimonial */}
-        <div className="rounded-2xl bg-white/[0.07] p-4 ring-1 ring-white/10">
-          <p className="text-sm italic leading-relaxed text-white/60">
-            {t("testimonial.quote")}
+        <div className="rounded-2xl bg-white/[0.06] p-5 border border-white/10 backdrop-blur-xs">
+          <p className="text-sm italic leading-relaxed text-white/80">
+            "{t("testimonial.quote")}"
           </p>
-          <div className="mt-3 flex items-center gap-2.5">
-            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 text-xs font-semibold text-white">
+          <div className="mt-4 flex items-center gap-3">
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-[#0052FF] to-[#4D7CFF] text-xs font-bold text-white shadow-xs">
               {t("testimonial.author").charAt(0)}
             </div>
             <div>
-              <p className="text-xs font-medium text-white/80">{t("testimonial.author")}</p>
-              <p className="text-[11px] text-white/45">{t("testimonial.role")}</p>
+              <p className="text-xs font-semibold text-white">{t("testimonial.author")}</p>
+              <p className="text-[11px] text-white/60">{t("testimonial.role")}</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <div className="relative z-10">
-        <p className="text-xs text-white/30">
+      <div className="relative z-10 pt-6 border-t border-white/10">
+        <p className="text-xs font-mono text-white/40">
           © {new Date().getFullYear()} {appConfig.name}. {t("copyright")}
         </p>
       </div>
@@ -120,28 +112,28 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
       {/* Form side */}
       <div className="flex flex-1 flex-col">
         {/* Header */}
-        <header className="flex items-center justify-between border-b border-border/60 bg-background px-4 py-3 sm:px-6 md:border-b-0 md:px-8 md:py-4">
+        <header className="flex items-center justify-between border-b border-border/50 bg-background/80 backdrop-blur-md px-4 py-3 sm:px-6 md:border-b-0 md:px-8 md:py-4">
           {/* Mobile-only logo */}
           <Link
             href={ROUTES.HOME}
-            className="flex items-center gap-2 md:invisible"
+            className="flex items-center gap-2.5 md:hidden"
             tabIndex={0}
           >
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-xs font-bold text-primary-foreground">
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-[#0052FF] to-[#4D7CFF] text-xs font-bold text-white shadow-accent">
               {appConfig.name.charAt(0)}
             </div>
-            <span className="text-sm font-semibold text-foreground">{t("product_title")}</span>
+            <span className="text-base font-heading text-foreground">{appConfig.name}</span>
           </Link>
 
-          <div className="ml-auto flex items-center gap-2">
+          <div className="ms-auto flex items-center gap-2">
             <LanguageSwitcher variant="navbar" />
-            <ThemeModeToggle className="h-8 w-8 shrink-0" />
+            <ThemeModeToggle className="h-9 w-9 shrink-0 rounded-xl" />
           </div>
         </header>
 
         {/* Centered form */}
         <main className="flex flex-1 items-center justify-center px-4 py-10 sm:px-8 sm:py-12 md:px-10 lg:px-16">
-          <div className="w-full max-w-[420px]">{children}</div>
+          <div className="w-full max-w-[440px]">{children}</div>
         </main>
       </div>
     </div>

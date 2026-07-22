@@ -6,6 +6,7 @@ import type { AppDispatch } from "@/store/store";
 import { setUser } from "@/store/slices/user.slice";
 import { loadSessionFromStorage } from "@/services/auth/session.storage";
 import { supabase } from "@/lib/supabase";
+import { authConfig } from "@/config/auth";
 
 /** Hydrates Redux from persisted session on load (mock or future HTTP session). */
 export function AuthSessionSync() {
@@ -16,14 +17,15 @@ export function AuthSessionSync() {
     if (ran.current) return;
     ran.current = true;
 
-    // 1. Initial sync from storage (fast)
+    // 1. Initial sync from storage (fast — works in both mock and http modes)
     const stored = loadSessionFromStorage();
     if (stored) dispatch(setUser(stored));
 
-    // 2. Listen to real Supabase auth changes
+    // 2. Real Supabase auth listener — only active when connected to a backend
+    if (authConfig.driver !== "http") return;
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (event === "SIGNED_IN" && session?.user) {
-        // Fetch fresh profile
         const { data: profile } = await supabase
           .from("profiles")
           .select("*")
@@ -47,3 +49,4 @@ export function AuthSessionSync() {
 
   return null;
 }
+

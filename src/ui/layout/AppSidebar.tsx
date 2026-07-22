@@ -80,12 +80,12 @@ export function AppSidebar() {
       dir={isRtl ? "rtl" : "ltr"}
       collapsible="icon"
     >
-      <SidebarHeader className="flex h-14 shrink-0 items-center justify-center border-b border-border/60 px-2 sm:h-16">
-        <div className="flex items-center gap-2 group-data-[collapsible=icon]:justify-center">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/90 text-sm font-semibold text-primary-foreground">
+      <SidebarHeader className="flex h-14 shrink-0 items-center justify-center border-b border-border/60 px-3 sm:h-16">
+        <div className="flex items-center gap-2.5 group-data-[collapsible=icon]:justify-center">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#0052FF] to-[#4D7CFF] text-base font-bold text-white shadow-accent">
             {appConfig.name.charAt(0)}
           </div>
-          <span className="truncate text-lg font-semibold tracking-tight group-data-[collapsible=icon]:hidden sm:text-xl">
+          <span className="truncate text-xl font-heading tracking-tight text-foreground group-data-[collapsible=icon]:hidden">
             {appConfig.name}
           </span>
         </div>
@@ -96,7 +96,7 @@ export function AppSidebar() {
           <div className="flex flex-col gap-4 pb-4">
             {isAdmin ? (
               <SidebarGroup className="p-2">
-                <SidebarGroupLabel className="group-data-[collapsible=icon]:hidden px-2 text-[11px] font-medium tracking-wide text-muted-foreground uppercase">
+                <SidebarGroupLabel className="group-data-[collapsible=icon]:hidden px-2 font-mono text-[10px] font-semibold tracking-[0.15em] text-muted-foreground/80 uppercase">
                   {t("nav_section_administration")}
                 </SidebarGroupLabel>
                 <SidebarGroupContent>
@@ -107,15 +107,15 @@ export function AppSidebar() {
                         isActive={activeHref === ROUTES.ADMIN}
                         tooltip={t("open_admin_console")}
                         className={cn(
-                          "h-9 transition-colors sm:h-10",
-                          activeHref === ROUTES.ADMIN && "bg-primary/10 font-medium text-primary"
+                          "h-9 rounded-xl transition-all duration-200 sm:h-10",
+                          activeHref === ROUTES.ADMIN && "bg-primary/10 font-semibold text-primary shadow-xs"
                         )}
                       >
                         <Link href={ROUTES.ADMIN} className="flex items-center gap-3">
                           <Shield
                             className={cn(
-                              "size-[18px] shrink-0 stroke-[1.5] sm:size-5",
-                              activeHref === ROUTES.ADMIN ? "text-primary" : "text-muted-foreground"
+                              "size-[18px] shrink-0 stroke-[1.75] sm:size-5 transition-transform duration-200",
+                              activeHref === ROUTES.ADMIN ? "text-primary scale-110" : "text-muted-foreground"
                             )}
                             aria-hidden
                           />
@@ -129,7 +129,7 @@ export function AppSidebar() {
             ) : null}
             {userAppSidebarSections.map((section) => (
               <SidebarGroup key={section.id} className="p-2">
-                <SidebarGroupLabel className="group-data-[collapsible=icon]:hidden px-2 text-[11px] font-medium tracking-wide text-muted-foreground uppercase">
+                <SidebarGroupLabel className="group-data-[collapsible=icon]:hidden px-2 font-mono text-[10px] font-semibold tracking-[0.15em] text-muted-foreground/80 uppercase">
                   {t(section.labelKey)}
                 </SidebarGroupLabel>
                 <SidebarGroupContent>
@@ -143,15 +143,15 @@ export function AppSidebar() {
                             isActive={active}
                             tooltip={t(item.id)}
                             className={cn(
-                              "h-9 transition-colors sm:h-10",
-                              active && "bg-primary/10 font-medium text-primary"
+                              "h-9 rounded-xl transition-all duration-200 sm:h-10 hover:translate-x-0.5",
+                              active && "bg-primary/10 font-semibold text-primary shadow-xs"
                             )}
                           >
                             <Link href={item.href} className="flex items-center gap-3">
                               <item.icon
                                 className={cn(
-                                  "size-[18px] shrink-0 stroke-[1.5] sm:size-5",
-                                  active ? "text-primary" : "text-muted-foreground"
+                                  "size-[18px] shrink-0 stroke-[1.75] sm:size-5 transition-all duration-200",
+                                  active ? "text-primary scale-110" : "text-muted-foreground"
                                 )}
                                 aria-hidden
                               />

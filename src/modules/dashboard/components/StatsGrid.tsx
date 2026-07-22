@@ -48,19 +48,25 @@ export function StatsGrid({ stats }: Props) {
     : statsData;
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-      {displayStats.map((stat) => (
-        <Card key={stat.id} className="border-none shadow-sm bg-card hover:shadow-md transition-shadow">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-start">
+    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {displayStats.map((stat, idx) => (
+        <Card
+          key={stat.id}
+          variant={idx === 0 ? "featured" : "default"}
+          className="p-1"
+        >
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-xs font-mono font-semibold uppercase tracking-wider text-muted-foreground text-start">
               {t(stat.id)}
             </CardTitle>
-            <stat.icon className="h-4 w-4 shrink-0 text-muted-foreground" />
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#0052FF] to-[#4D7CFF] text-white shadow-accent">
+              <stat.icon className="h-4 w-4 stroke-[2]" />
+            </div>
           </CardHeader>
-          <CardContent className="text-start">
-            <div className="text-2xl font-bold">{stat.value}</div>
+          <CardContent className="text-start space-y-1">
+            <div className="text-3xl font-heading tracking-tight text-foreground">{stat.value}</div>
             {stat.change && (
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-xs font-mono text-muted-foreground/80">
                 {stat.change}
               </p>
             )}
