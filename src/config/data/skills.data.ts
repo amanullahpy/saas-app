@@ -1,0 +1,26 @@
+export const skillsData = {
+  frontend: [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Redux Toolkit",
+    "HTML5",
+    "CSS3",
+    "Radix UI",
+    "shadcn/ui",
+  ],
+  fullstack: [
+    "Node.js",
+    "Express",
+    "REST APIs",
+    "GraphQL",
+    "PostgreSQL",
+    "MongoDB",
+    "Prisma",
+    "Docker",
+    "Git",
+    "CI/CD",
+  ],
+};

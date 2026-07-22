@@ -155,6 +155,16 @@
   "settings": {
     "title": "ترتیبات",
     "description": "اپنے اکاؤنٹ کی ترتیبات اور ترجیحات منظم کریں۔",
+    "profile": {
+      "title": "پروفائل",
+      "description": "ذاتی معلومات اور دوسرے آپ کو پلیٹ فارم پر کیسے دیکھتے ہیں۔",
+      "full_name": "پورا نام",
+      "email_address": "ای میل ایڈریس",
+      "job_title": "ملازمت کا عنوان",
+      "phone": "فون نمبر",
+      "bio": "بائیو",
+      "save_changes": "تبدیلیاں محفوظ کریں"
+    },
     "security": {
       "title": "سیکیورٹی",
       "description": "اضافی تصدیق کے ساتھ اپنے اکاؤنٹ کی حفاظت کریں۔",
@@ -176,12 +186,28 @@
   "dashboard": {
     "title": "خوش آمدید",
     "description": "آج آپ کے پراجیکٹس میں کیا ہو رہا ہے یہاں دیکھیں۔",
+    "recent_activity": "حالیہ سرگرمی",
     "stats": {
       "revenue": "کل آمدنی",
       "subscriptions": "سبسکرپشنز",
       "sales": "فروخت",
       "active_now": "اب فعال"
     }
+  },
+  "admin": {
+    "title": "پلیٹ فارم انتظامیہ",
+    "description": "کراس ٹیننٹ آپریشنز — صرف سپر ایڈمن کی رسائی۔",
+    "total_tenants": "کل ٹیننٹس",
+    "total_users": "کل صارفین",
+    "active_now": "اب فعال",
+    "security_alerts": "سیکیورٹی الرٹس",
+    "mrr": "ماہانہ متکرر آمدنی",
+    "regions": "علاقے",
+    "recently_created_tenants": "حال ہی میں بنائے گئے ٹیننٹس",
+    "members": "اراکین",
+    "created": "بنایا گیا",
+    "status_active": "فعال",
+    "status_suspended": "معطل"
   },
   "auth": {
     "login": "لاگ ان",

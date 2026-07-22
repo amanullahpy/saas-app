@@ -71,12 +71,12 @@ export function LoginForm() {
             name="email"
             render={({ field, fieldState }) => (
               <FormItem className="space-y-1.5">
-                <FormLabel className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                <FormLabel className="text-sm font-medium text-foreground">
                   {t("email")}
                 </FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <Mail className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400 dark:text-neutral-500" />
+                    <Mail className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                     <AuthInput
                       placeholder={t("placeholder_email")}
                       {...field}
@@ -87,7 +87,7 @@ export function LoginForm() {
                     />
                   </div>
                 </FormControl>
-                <FormMessage className="text-xs text-red-500" />
+                <FormMessage className="text-xs text-destructive" />
               </FormItem>
             )}
           />
@@ -99,7 +99,7 @@ export function LoginForm() {
             render={({ field, fieldState }) => (
               <FormItem className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <FormLabel className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                  <FormLabel className="text-sm font-medium text-foreground">
                     {t("password")}
                   </FormLabel>
                   <Link
@@ -111,7 +111,7 @@ export function LoginForm() {
                 </div>
                 <FormControl>
                   <div className="relative">
-                    <Lock className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400 dark:text-neutral-500" />
+                    <Lock className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                     <AuthInput
                       type={showPassword ? "text" : "password"}
                       placeholder={t("placeholder_password")}
@@ -125,13 +125,13 @@ export function LoginForm() {
                       tabIndex={-1}
                       aria-label={showPassword ? "Hide password" : "Show password"}
                       onClick={() => setShowPassword((v) => !v)}
-                      className="absolute right-3.5 top-1/2 -translate-y-1/2 rounded p-0.5 text-neutral-400 transition-colors hover:text-neutral-600 dark:text-neutral-500 dark:hover:text-neutral-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                      className="absolute right-3.5 top-1/2 -translate-y-1/2 rounded p-0.5 text-muted-foreground transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     >
                       {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                     </button>
                   </div>
                 </FormControl>
-                <FormMessage className="text-xs text-red-500" />
+                <FormMessage className="text-xs text-destructive" />
               </FormItem>
             )}
           />
@@ -151,7 +151,7 @@ export function LoginForm() {
                 </FormControl>
                 <FormLabel
                   htmlFor="rememberMe"
-                  className="cursor-pointer text-sm font-normal text-neutral-600 dark:text-neutral-400"
+                  className="cursor-pointer text-sm font-normal text-muted-foreground"
                 >
                   {t("remember_me")}
                 </FormLabel>

@@ -3,6 +3,7 @@ import { Link } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ROUTES } from "@/config/routes";
 import { authConfig } from "@/config/auth";
+import { appConfig } from "@/config/app.config";
 
 export default async function LoginPage({
   params,
@@ -14,41 +15,46 @@ export default async function LoginPage({
   const t = await getTranslations("auth");
 
   return (
-    <div className="w-full space-y-8">
-      {/* Heading */}
-      <div className="space-y-2">
-        <h1 className="text-[1.75rem] font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-          {t("login")}
-        </h1>
-        <p className="text-sm text-neutral-500 dark:text-neutral-400">
-          {t("login_description")}
-        </p>
-      </div>
-
-      {/* Form card */}
-      <div className="rounded-2xl border border-neutral-200 dark:border-neutral-700/60 bg-white dark:bg-neutral-900 p-6 shadow-sm sm:p-8">
-        <LoginForm />
-      </div>
-
-      {/* Mock hint */}
-      {authConfig.driver === "mock" && (
-        <div className="rounded-xl border border-amber-200 dark:border-amber-800/50 bg-amber-50 dark:bg-amber-950/20 px-4 py-3">
-          <p className="text-center text-xs leading-relaxed text-amber-700 dark:text-amber-400">
-            {t("mock_hint")}
+    <div className="flex min-h-svh flex-col items-center justify-center bg-muted/30 p-4">
+      <div className="w-full max-w-md space-y-8">
+        {/* Logo/Brand */}
+        <div className="flex flex-col items-center space-y-2 text-center">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-xl font-semibold text-primary-foreground">
+            {appConfig.name.charAt(0)}
+          </div>
+          <h1 className="text-2xl font-bold tracking-tight text-foreground">
+            {t("login")}
+          </h1>
+          <p className="text-sm text-muted-foreground">
+            {t("login_description")}
           </p>
         </div>
-      )}
 
-      {/* Footer */}
-      <p className="text-center text-sm text-neutral-500 dark:text-neutral-400">
-        {t("no_account")}{" "}
-        <Link
-          href={ROUTES.AUTH_SIGNUP}
-          className="font-semibold text-primary underline-offset-4 hover:underline"
-        >
-          {t("signup")}
-        </Link>
-      </p>
+        {/* Form card */}
+        <div className="rounded-xl border border-border bg-card p-6 shadow-lg sm:p-8">
+          <LoginForm />
+        </div>
+
+        {/* Mock hint */}
+        {authConfig.driver === "mock" && (
+          <div className="rounded-xl border border-amber-200/50 dark:border-amber-800/30 bg-amber-50/50 dark:bg-amber-950/10 px-4 py-3">
+            <p className="text-center text-xs leading-relaxed text-amber-700 dark:text-amber-400">
+              {t("mock_hint")}
+            </p>
+          </div>
+        )}
+
+        {/* Footer */}
+        <p className="text-center text-sm text-muted-foreground">
+          {t("no_account")}{" "}
+          <Link
+            href={ROUTES.AUTH_SIGNUP}
+            className="font-semibold text-primary underline-offset-4 hover:underline"
+          >
+            {t("signup")}
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }

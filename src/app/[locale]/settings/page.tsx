@@ -1,5 +1,7 @@
+import { MainShell } from "@/ui/layout/MainShell";
 import { ProfileSettings } from "@/modules/settings/components/ProfileSettings";
 import { PreferencesSettings } from "@/modules/settings/components/PreferencesSettings";
+import { PageHeader } from "@/components/ui/page-header";
 import { setRequestLocale } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
 import { getUserProfile } from "@/services/settings";
@@ -24,16 +26,15 @@ export default async function SettingsPage({
   }
 
   return (
-    <>
-      <div>
-        <h2 className="text-3xl font-bold tracking-tight text-foreground">{t("title")}</h2>
-        <p className="text-muted-foreground mt-1 text-sm">{t("description")}</p>
-      </div>
+    <MainShell>
+      <div className="space-y-8">
+        <PageHeader title={t("title")} description={t("description")} />
 
-      <div className="grid gap-6">
-        <ProfileSettings profile={profile} />
-        <PreferencesSettings />
+        <div className="grid gap-6">
+          <ProfileSettings profile={profile} />
+          <PreferencesSettings />
+        </div>
       </div>
-    </>
+    </MainShell>
   );
 }

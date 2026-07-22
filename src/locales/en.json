@@ -43,7 +43,32 @@
     "admin_audit": "Platform audit",
     "admin_api_keys": "API keys",
     "admin_reports": "Reports",
-    "skills": "Skills"
+    "skills": "Skills",
+    "error_title": "Something went wrong",
+    "error_description": "An error occurred while loading the data. Please try again.",
+    "retry": "Try Again",
+    "validation": {
+      "name_min_length": "Name must be at least 2 characters",
+      "invalid_email": "Invalid email address",
+      "required": "This field is required"
+    },
+    "unauthorized_title": "Access Denied",
+    "unauthorized_description": "You don't have permission to access this resource."
+  },
+  "admin": {
+    "title": "Platform Administration",
+    "description": "Cross-tenant operations — super-admin access only.",
+    "total_tenants": "Total Tenants",
+    "total_users": "Total Users",
+    "active_now": "Active Now",
+    "security_alerts": "Security Alerts",
+    "mrr": "MRR",
+    "regions": "Regions",
+    "recently_created_tenants": "Recently Created Tenants",
+    "members": "members",
+    "created": "Created",
+    "status_active": "Active",
+    "status_suspended": "Suspended"
   },
   "pages": {
     "workspace": {
@@ -155,6 +180,16 @@
   "settings": {
     "title": "Settings",
     "description": "Manage your account settings and preferences.",
+    "profile": {
+      "title": "Profile",
+      "description": "Personal information and how others see you on the platform.",
+      "full_name": "Full Name",
+      "email_address": "Email Address",
+      "job_title": "Job Title",
+      "phone": "Phone Number",
+      "bio": "Bio",
+      "save_changes": "Save Changes"
+    },
     "security": {
       "title": "Security",
       "description": "Protect your account with additional verification.",
@@ -176,6 +211,7 @@
   "dashboard": {
     "title": "Welcome Back",
     "description": "Here is what's happening with your projects today.",
+    "recent_activity": "Recent Activity",
     "stats": {
       "revenue": "Total Revenue",
       "subscriptions": "Subscriptions",

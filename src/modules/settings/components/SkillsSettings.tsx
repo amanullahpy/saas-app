@@ -1,40 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { X, Plus } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-
-// ─── Default skill sets ────────────────────────────────────────────────────────
-
-const DEFAULT_FRONTEND_SKILLS = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Tailwind CSS",
-  "Framer Motion",
-  "Redux Toolkit",
-  "HTML5",
-  "CSS3",
-  "Radix UI",
-  "shadcn/ui",
-];
-
-const DEFAULT_FULLSTACK_SKILLS = [
-  "Node.js",
-  "Express",
-  "REST APIs",
-  "GraphQL",
-  "PostgreSQL",
-  "MongoDB",
-  "Prisma",
-  "Docker",
-  "Git",
-  "CI/CD",
-];
+import { skillsData } from "@/config/data/skills.data";
 
 // ─── Skill group sub-component ─────────────────────────────────────────────────
 
@@ -127,12 +100,29 @@ export function SkillsSettings({ initialFrontend, initialFullstack, userId }: Pr
   const t = useTranslations("settings.skills");
   const [saving, setSaving] = useState(false);
 
-  const [frontendSkills, setFrontendSkills] = useState<string[]>(initialFrontend);
-  const [fullstackSkills, setFullstackSkills] = useState<string[]>(initialFullstack);
+  const [frontendSkills, setFrontendSkills] = useState<string[]>(
+    userId ? initialFrontend : skillsData.frontend
+  );
+  const [fullstackSkills, setFullstackSkills] = useState<string[]>(
+    userId ? initialFullstack : skillsData.fullstack
+  );
+
+  useEffect(() => {
+    if (userId) {
+      setFrontendSkills(initialFrontend);
+      setFullstackSkills(initialFullstack);
+    }
+  }, [userId, initialFrontend, initialFullstack]);
 
   async function handleSave() {
-    if (!userId) return;
     setSaving(true);
+    if (!userId) {
+      setTimeout(() => {
+        console.log("Mock Save Skills:", { frontendSkills, fullstackSkills });
+        setSaving(false);
+      }, 500);
+      return;
+    }
     try {
       const res = await fetch("/api/settings/skills", {
         method: "PATCH",
@@ -140,7 +130,6 @@ export function SkillsSettings({ initialFrontend, initialFullstack, userId }: Pr
         body: JSON.stringify({ userId, frontendSkills, fullstackSkills }),
       });
       if (res.ok) {
-        // toast would go here if imported
         console.log("Skills saved");
       }
     } catch {
@@ -172,7 +161,7 @@ export function SkillsSettings({ initialFrontend, initialFullstack, userId }: Pr
           type="button"
           className="h-11 px-8 rounded-xl"
           onClick={handleSave}
-          disabled={saving || !userId}
+          disabled={saving}
         >
           {saving ? "Saving…" : t("save")}
         </Button>
