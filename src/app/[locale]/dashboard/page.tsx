@@ -44,7 +44,7 @@ export default async function DashboardPage({
     <MainShell>
       <div className="space-y-8">
         <div className="space-y-2 text-start">
-          <SectionLabel pulse>Executive Overview</SectionLabel>
+          <SectionLabel pulse>{t("badge")}</SectionLabel>
           <h1 className="text-3xl sm:text-4xl font-heading tracking-tight text-foreground">
             {t("title")}
           </h1>
@@ -83,8 +83,8 @@ export default async function DashboardPage({
             ) : (
               <EmptyState
                 icon={Activity}
-                title="No recent activity"
-                description="Your recent activity will appear here."
+                title={t("no_activity_title")}
+                description={t("no_activity_desc")}
               />
             )}
           </div>

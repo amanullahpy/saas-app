@@ -1,22 +1,37 @@
 import { cn } from "@/lib/utils";
+import { SectionLabel } from "./section-label";
 
 interface PageHeaderProps {
   title: string;
   description?: string;
+  badge?: string;
+  pulse?: boolean;
   children?: React.ReactNode;
   className?: string;
 }
 
-export function PageHeader({ title, description, children, className }: PageHeaderProps) {
+export function PageHeader({
+  title,
+  description,
+  badge,
+  pulse = true,
+  children,
+  className,
+}: PageHeaderProps) {
   return (
-    <div className={cn("flex items-center justify-between gap-4", className)}>
-      <div className="flex-1">
-        <h2 className="text-3xl font-bold tracking-tight text-foreground">{title}</h2>
+    <div className={cn("flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-start", className)}>
+      <div className="space-y-2 min-w-0">
+        {badge && <SectionLabel pulse={pulse}>{badge}</SectionLabel>}
+        <h1 className="text-3xl sm:text-4xl font-heading tracking-tight text-foreground truncate">
+          {title}
+        </h1>
         {description && (
-          <p className="mt-1 text-sm text-muted-foreground">{description}</p>
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl">
+            {description}
+          </p>
         )}
       </div>
-      {children && <div className="flex items-center gap-2">{children}</div>}
+      {children && <div className="flex items-center gap-3 shrink-0">{children}</div>}
     </div>
   );
 }

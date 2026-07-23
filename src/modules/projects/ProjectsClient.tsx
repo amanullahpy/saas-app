@@ -8,6 +8,7 @@ import { Plus, Clock, CheckCircle2, AlertCircle, Users, Pencil, Trash2, Eye, Fol
 import { toast } from "@/lib/toast";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
+import { PageHeader } from "@/components/ui/page-header";
 
 export interface Project {
   name: string; status: string; members: number;
@@ -67,76 +68,86 @@ export function ProjectsClient({ initialProjects }: { initialProjects: Project[]
       {children}
     </div>
   );
-  const inputCls = "h-10 w-full rounded-xl border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 px-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20";
+  const inputCls = "h-11 w-full rounded-xl border border-border/80 bg-background/50 px-3.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/40 transition-all";
 
   return (
     <>
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground">{t("modules.projects.title")}</h2>
-          <p className="mt-1 text-sm text-muted-foreground">{t("modules.projects.description")}</p>
-        </div>
-        <Button className="w-fit gap-2 rounded-xl" onClick={() => { setForm({ name:"", status:"Planning", members:"1", tasks:"1", due:"" }); setAddOpen(true); }}>
-          <Plus className="h-4 w-4" /> {t("modules.projects.new_project")}
+      <PageHeader
+        badge={t("modules.projects.badge")}
+        title={t("modules.projects.title")}
+        description={t("modules.projects.description")}
+      >
+        <Button
+          variant="gradient"
+          size="lg"
+          className="gap-2 shadow-accent"
+          onClick={() => { setForm({ name:"", status:"Planning", members:"1", tasks:"1", due:"" }); setAddOpen(true); }}
+        >
+          <Plus className="h-4 w-4 stroke-[2]" /> {t("modules.projects.new_project")}
         </Button>
-      </div>
+      </PageHeader>
 
       {/* Stats */}
-      <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-5 grid-cols-2 lg:grid-cols-4">
         {[
-          { label: t("modules.projects.stats.total"), value:total, icon:FolderKanban, color:"text-primary" },
-          { label: t("modules.projects.stats.in_progress"), value:inProgress, icon:Clock, color:"text-blue-500" },
-          { label: t("modules.projects.stats.completed"), value:completed, icon:CheckCircle2, color:"text-emerald-500" },
-          { label: t("modules.projects.stats.planning"), value:planning, icon:AlertCircle, color:"text-neutral-400" }
-        ].map(s => (
-          <Card key={s.label} className="border-none shadow-sm bg-card hover:shadow-md transition-shadow">
-            <CardContent className="flex items-center gap-3 pt-5">
-              <s.icon className={`h-5 w-5 shrink-0 ${s.color}`} />
-              <div><p className="text-2xl font-bold">{s.value}</p><p className="text-xs text-muted-foreground">{s.label}</p></div>
+          { label: t("modules.projects.stats.total"), value:total, icon:FolderKanban },
+          { label: t("modules.projects.stats.in_progress"), value:inProgress, icon:Clock },
+          { label: t("modules.projects.stats.completed"), value:completed, icon:CheckCircle2 },
+          { label: t("modules.projects.stats.planning"), value:planning, icon:AlertCircle }
+        ].map((s, idx) => (
+          <Card key={s.label} variant={idx === 0 ? "featured" : "default"} className="p-1">
+            <CardContent className="flex items-center gap-4 pt-5">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#0052FF] to-[#4D7CFF] text-white shadow-accent">
+                <s.icon className="h-5 w-5 stroke-[2]" />
+              </div>
+              <div className="text-start">
+                <p className="text-3xl font-heading tracking-tight text-foreground">{s.value}</p>
+                <p className="text-xs font-mono font-medium uppercase tracking-wider text-muted-foreground">{s.label}</p>
+              </div>
             </CardContent>
           </Card>
         ))}
       </div>
 
       {/* Cards */}
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {projects.length === 0 ? (
-          <div className="col-span-full flex flex-col items-center justify-center rounded-2xl border border-dashed border-border py-16 text-center">
+          <div className="col-span-full flex flex-col items-center justify-center rounded-2xl border border-dashed border-border/80 py-16 text-center bg-card/40">
             <FolderKanban className="mb-3 h-10 w-10 text-muted-foreground/40" />
-            <p className="text-sm font-medium text-muted-foreground">No projects yet</p>
-            <p className="mt-1 text-xs text-muted-foreground/70">Create your first project to get started.</p>
+            <p className="text-sm font-semibold text-foreground">{t("modules.projects.no_projects_yet")}</p>
+            <p className="mt-1 text-xs text-muted-foreground">{t("modules.projects.create_first_project")}</p>
           </div>
         ) : (
           projects.map(project => {
             const pct = project.tasks > 0 ? Math.round((project.done / project.tasks) * 100) : 0;
             return (
-              <Card key={project.name} className="border-none shadow-sm bg-card hover:shadow-md transition-shadow group">
+              <Card key={project.name} className="group hover:-translate-y-1 transition-all duration-300">
                 <CardHeader className="pb-3">
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-2.5 min-w-0">
                       <div className={`h-3 w-3 shrink-0 rounded-full ${project.color}`} />
-                      <CardTitle className="truncate text-sm font-semibold group-hover:text-primary transition-colors">{project.name}</CardTitle>
+                      <CardTitle className="truncate text-base font-heading group-hover:text-primary transition-colors">{project.name}</CardTitle>
                     </div>
-                    <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-medium ${STATUS_STYLES[project.status]}`}>{project.status}</span>
+                    <span className={`shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-mono font-medium ${STATUS_STYLES[project.status]}`}>{project.status}</span>
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-1.5">
-                    <div className="flex justify-between text-xs text-muted-foreground">
+                    <div className="flex justify-between text-xs font-mono text-muted-foreground">
                       <span>{project.done} / {project.tasks} tasks</span><span>{pct}%</span>
                     </div>
-                    <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
-                      <div className={`h-full rounded-full transition-all ${project.color}`} style={{ width:`${pct}%` }} />
+                    <div className="h-2 w-full rounded-full bg-muted overflow-hidden">
+                      <div className={`h-full rounded-full transition-all duration-500 ${project.color}`} style={{ width:`${pct}%` }} />
                     </div>
                   </div>
                   <div className="flex items-center justify-between text-xs text-muted-foreground">
-                    <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> {project.members} {t("ui.labels.members").toLowerCase()}</span>
-                    <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {t("ui.labels.due_date")} {project.due}</span>
+                    <span className="flex items-center gap-1.5"><Users className="h-3.5 w-3.5 text-primary" /> {project.members} {t("ui.labels.members").toLowerCase()}</span>
+                    <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5 text-muted-foreground" /> {t("ui.labels.due_date")} {project.due}</span>
                   </div>
-                  <div className="flex items-center gap-1 pt-1 border-t border-border/40">
-                    <Button variant="ghost" size="sm" className="h-7 gap-1 rounded-lg text-xs text-muted-foreground hover:text-foreground" onClick={() => openDetail(project)}><Eye className="h-3.5 w-3.5" />{t("ui.actions.view")}</Button>
-                    <Button variant="ghost" size="sm" className="h-7 gap-1 rounded-lg text-xs text-muted-foreground hover:text-foreground" onClick={() => openEdit(project)}><Pencil className="h-3.5 w-3.5" />{t("ui.actions.edit")}</Button>
-                    <Button variant="ghost" size="sm" className="h-7 gap-1 rounded-lg text-xs text-muted-foreground hover:text-destructive ml-auto" onClick={() => openDelete(project)}><Trash2 className="h-3.5 w-3.5" />{t("ui.actions.delete")}</Button>
+                  <div className="flex items-center gap-1 pt-2 border-t border-border/40">
+                    <Button variant="ghost" size="sm" className="h-8 gap-1.5 rounded-lg text-xs hover:bg-primary/10 hover:text-primary" onClick={() => openDetail(project)}><Eye className="h-3.5 w-3.5" />{t("ui.actions.view")}</Button>
+                    <Button variant="ghost" size="sm" className="h-8 gap-1.5 rounded-lg text-xs hover:bg-primary/10 hover:text-primary" onClick={() => openEdit(project)}><Pencil className="h-3.5 w-3.5" />{t("ui.actions.edit")}</Button>
+                    <Button variant="ghost" size="sm" className="h-8 gap-1.5 rounded-lg text-xs text-destructive hover:bg-destructive/10 ms-auto" onClick={() => openDelete(project)}><Trash2 className="h-3.5 w-3.5" />{t("ui.actions.delete")}</Button>
                   </div>
                 </CardContent>
               </Card>

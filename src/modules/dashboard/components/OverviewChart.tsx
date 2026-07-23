@@ -2,6 +2,7 @@
 
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTranslations } from "next-intl";
 
 const data = [
   { name: "Jan", total: Math.floor(Math.random() * 5000) + 1000 },
@@ -19,12 +20,17 @@ const data = [
 ];
 
 export function OverviewChart() {
+  const t = useTranslations("dashboard");
+
   return (
-    <Card className="col-span-4 border-none shadow-sm bg-card hover:shadow-md transition-shadow">
-      <CardHeader>
-        <CardTitle className="text-sm font-medium">Overview</CardTitle>
+    <Card className="col-span-4 border border-border/80 shadow-sm bg-card hover:shadow-lg transition-all duration-300">
+      <CardHeader className="border-b border-border/40 pb-4">
+        <CardTitle className="text-base font-heading font-semibold text-foreground flex items-center gap-2 text-start">
+          <span className="h-2 w-2 rounded-full bg-primary" />
+          {t("overview")}
+        </CardTitle>
       </CardHeader>
-      <CardContent className="ps-2">
+      <CardContent className="ps-2 pt-4">
         <div className="h-[350px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data}>

@@ -95,17 +95,17 @@ export function TeamClient({ initialMembers }: { initialMembers: Member[] }) {
   return (
     <>
       {/* Stats */}
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-5 sm:grid-cols-4">
         {[
-          { label: "Total Members", value: members.length },
-          { label: "Active Now", value: members.filter((m) => m.status === "Active").length },
-          { label: "Departments", value: [...new Set(members.map((m) => m.dept))].length },
-          { label: "Admins", value: members.filter((m) => m.role === "Admin").length },
-        ].map((s) => (
-          <Card key={s.label} className="border-none shadow-sm bg-card">
-            <CardContent className="pt-5">
-              <p className="text-2xl font-bold">{s.value}</p>
-              <p className="text-xs text-muted-foreground mt-0.5">{s.label}</p>
+          { label: t("modules.team.stats.total_members"), value: members.length },
+          { label: t("modules.team.stats.active_now"), value: members.filter((m) => m.status === "Active").length },
+          { label: t("modules.team.stats.departments"), value: [...new Set(members.map((m) => m.dept))].length },
+          { label: t("modules.team.stats.admins"), value: members.filter((m) => m.role === "Admin").length },
+        ].map((s, idx) => (
+          <Card key={s.label} variant={idx === 0 ? "featured" : "default"} className="p-1">
+            <CardContent className="pt-5 text-start">
+              <p className="text-3xl font-heading tracking-tight text-foreground">{s.value}</p>
+              <p className="text-xs font-mono font-medium uppercase tracking-wider text-muted-foreground mt-1">{s.label}</p>
             </CardContent>
           </Card>
         ))}
@@ -114,74 +114,74 @@ export function TeamClient({ initialMembers }: { initialMembers: Member[] }) {
       {/* Toolbar */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="relative max-w-sm flex-1">
-          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/70" />
           <input
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search members..."
-            className="h-10 w-full rounded-xl border border-border bg-background pl-9 pr-4 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+            placeholder={t("modules.team.search_placeholder")}
+            className="h-11 w-full rounded-xl border border-border/80 bg-background/50 pl-10 pr-4 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/30 transition-all"
           />
         </div>
-        <Button className="w-fit gap-2 rounded-xl" onClick={() => setInviteOpen(true)}>
-          <UserPlus className="h-4 w-4" /> Invite Member
+        <Button variant="gradient" size="lg" className="w-fit gap-2 shadow-accent" onClick={() => setInviteOpen(true)}>
+          <UserPlus className="h-4 w-4 stroke-[2]" /> {t("modules.team.invite_member")}
         </Button>
       </div>
 
       {/* Member grid */}
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
         {filtered.map((member) => (
-          <Card key={member.email} className="border-none shadow-sm bg-card hover:shadow-md transition-shadow">
-            <CardContent className="pt-5">
+          <Card key={member.email} className="group hover:-translate-y-1 transition-all duration-300">
+            <CardContent className="pt-5 text-start">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
                   <div className="relative">
-                    <Avatar className="h-10 w-10">
-                      <AvatarFallback className={`${member.color} text-white text-xs font-semibold`}>
+                    <Avatar className="h-11 w-11 rounded-xl shadow-xs">
+                      <AvatarFallback className={`${member.color} text-white text-xs font-bold rounded-xl`}>
                         {member.initials}
                       </AvatarFallback>
                     </Avatar>
-                    <span className={`absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full ring-2 ring-card ${STATUS_DOT[member.status]}`} />
+                    <span className={`absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full ring-2 ring-card ${STATUS_DOT[member.status]}`} />
                   </div>
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-semibold text-foreground">{member.name}</p>
-                    <p className="truncate text-xs text-muted-foreground">{member.dept}</p>
+                    <p className="truncate text-sm font-heading font-semibold text-foreground group-hover:text-primary transition-colors">{member.name}</p>
+                    <p className="truncate text-xs font-mono text-muted-foreground">{member.dept}</p>
                   </div>
                 </div>
 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="icon" className="h-7 w-7 shrink-0 rounded-lg">
+                    <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0 rounded-lg hover:bg-primary/10">
                       <MoreHorizontal className="h-4 w-4" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="w-44">
+                  <DropdownMenuContent align="end" className="w-44 rounded-xl">
                     <DropdownMenuItem onClick={() => setDetailsMember(member)}>
-                      <Eye className="mr-2 h-3.5 w-3.5" /> View details
+                      <Eye className="mr-2 h-3.5 w-3.5" /> {t("modules.team.view_details")}
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => { setEditMember(member); setEditRole(member.role); }}>
-                      <Pencil className="mr-2 h-3.5 w-3.5" /> Edit role
+                      <Pencil className="mr-2 h-3.5 w-3.5" /> {t("modules.team.edit_role")}
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem
                       className="text-destructive focus:text-destructive"
                       onClick={() => setDeleteMember(member)}
                     >
-                      <Trash2 className="mr-2 h-3.5 w-3.5" /> Remove
+                      <Trash2 className="mr-2 h-3.5 w-3.5" /> {t("modules.team.remove")}
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
 
-              <div className="mt-4 flex items-center justify-between">
-                <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${ROLE_STYLES[member.role]}`}>
+              <div className="mt-5 flex items-center justify-between pt-3 border-t border-border/40">
+                <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-mono font-medium ${ROLE_STYLES[member.role]}`}>
                   {member.role}
                 </span>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-7 w-7 rounded-lg text-muted-foreground hover:text-foreground"
-                  onClick={() => { navigator.clipboard.writeText(member.email); toast.success("Email copied"); }}
+                  className="h-8 w-8 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10"
+                  onClick={() => { navigator.clipboard.writeText(member.email); toast.success(t("modules.team.email_copied")); }}
                   title={`Email ${member.name}`}
                 >
                   <Mail className="h-3.5 w-3.5" />
@@ -191,8 +191,8 @@ export function TeamClient({ initialMembers }: { initialMembers: Member[] }) {
           </Card>
         ))}
         {filtered.length === 0 && (
-          <p className="col-span-full py-8 text-center text-sm text-muted-foreground">
-            {members.length === 0 ? "No team members yet. Invite someone to get started." : "No members match your search."}
+          <p className="col-span-full py-12 text-center text-sm font-mono text-muted-foreground">
+            {members.length === 0 ? t("modules.team.no_members_yet") : t("modules.team.no_members_match")}
           </p>
         )}
       </div>
@@ -201,25 +201,25 @@ export function TeamClient({ initialMembers }: { initialMembers: Member[] }) {
       <FormModal
         open={inviteOpen}
         onOpenChange={setInviteOpen}
-        title="Invite a Member"
-        description="Send an invitation email to add someone to your workspace."
-        submitLabel="Send Invitation"
+        title={t("modules.team.invite_title")}
+        description={t("modules.team.invite_desc")}
+        submitLabel={t("modules.team.send_invitation")}
         loading={inviteLoading}
         onSubmit={handleInvite}
       >
         <div className="space-y-4">
           <div className="space-y-1.5">
-            <label className="text-sm font-medium text-foreground">Email address</label>
+            <label className="text-sm font-medium text-foreground">{t("modules.team.email_address")}</label>
             <input
               type="email"
               value={inviteEmail}
               onChange={(e) => setInviteEmail(e.target.value)}
-              placeholder="colleague@company.com"
+              placeholder={t("modules.team.email_placeholder")}
               className="h-10 w-full rounded-xl border border-border bg-background px-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
           </div>
           <div className="space-y-1.5">
-            <label className="text-sm font-medium text-foreground">Role</label>
+            <label className="text-sm font-medium text-foreground">{t("modules.team.role")}</label>
             <select
               value={inviteRole}
               onChange={(e) => setInviteRole(e.target.value)}
@@ -239,12 +239,12 @@ export function TeamClient({ initialMembers }: { initialMembers: Member[] }) {
           open={!!detailsMember}
           onOpenChange={(v) => !v && setDetailsMember(null)}
           title={detailsMember.name}
-          description="Member profile details"
+          description={t("modules.team.member_profile_details")}
           fields={[
-            { label: "Email", value: detailsMember.email, mono: true },
-            { label: "Department", value: detailsMember.dept },
-            { label: "Role", value: detailsMember.role },
-            { label: "Status", value: detailsMember.status },
+            { label: t("modules.team.member_email"), value: detailsMember.email, mono: true },
+            { label: t("modules.team.member_department"), value: detailsMember.dept },
+            { label: t("modules.team.member_role"), value: detailsMember.role },
+            { label: t("modules.team.member_status"), value: detailsMember.status },
           ]}
         />
       )}
@@ -254,14 +254,14 @@ export function TeamClient({ initialMembers }: { initialMembers: Member[] }) {
         <FormModal
           open={!!editMember}
           onOpenChange={(v) => !v && setEditMember(null)}
-          title={`Edit Role — ${editMember.name}`}
-          description="Change this member's access level in the workspace."
-          submitLabel="Save Changes"
+          title={t("modules.team.edit_role_title", { name: editMember.name })}
+          description={t("modules.team.edit_role_desc")}
+          submitLabel={t("modules.team.save_changes")}
           loading={editLoading}
           onSubmit={handleEditSave}
         >
           <div className="space-y-1.5">
-            <label className="text-sm font-medium text-foreground">Role</label>
+            <label className="text-sm font-medium text-foreground">{t("modules.team.role")}</label>
             <select
               value={editRole}
               onChange={(e) => setEditRole(e.target.value)}

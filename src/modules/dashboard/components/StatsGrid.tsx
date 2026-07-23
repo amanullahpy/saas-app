@@ -32,8 +32,8 @@ export function StatsGrid({ stats }: Props) {
     return (
       <EmptyState
         icon={BarChart3}
-        title="No stats available"
-        description="Stats data will appear here once available."
+        title={t("no_stats_title")}
+        description={t("no_stats_desc")}
       />
     );
   }

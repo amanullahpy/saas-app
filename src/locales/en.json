@@ -56,6 +56,7 @@
     "unauthorized_description": "You don't have permission to access this resource."
   },
   "admin": {
+    "badge": "Platform Administration",
     "title": "Platform Administration",
     "description": "Cross-tenant operations — super-admin access only.",
     "total_tenants": "Total Tenants",
@@ -209,14 +210,20 @@
     }
   },
   "dashboard": {
+    "badge": "Executive Overview",
+    "overview": "Overview",
     "title": "Welcome Back",
     "description": "Here is what's happening with your projects today.",
     "recent_activity": "Recent Activity",
+    "no_activity_title": "No recent activity",
+    "no_activity_desc": "Your recent activity will appear here.",
     "stats": {
       "revenue": "Total Revenue",
       "subscriptions": "Subscriptions",
       "sales": "Sales",
-      "active_now": "Active Now"
+      "active_now": "Active Now",
+      "no_stats_title": "No stats available",
+      "no_stats_desc": "Stats data will appear here once available."
     }
   },
   "auth": {
@@ -408,6 +415,7 @@
   },
   "modules": {
     "projects": {
+      "badge": "Projects & Workspace",
       "title": "Projects",
       "description": "Track initiatives across your workspace.",
       "new_project": "New Project",
@@ -425,19 +433,23 @@
       "project_created": "Project \"{name}\" created successfully",
       "project_updated": "Project updated successfully",
       "project_deleted": "\"{name}\" deleted successfully",
+      "no_projects_yet": "No projects yet",
+      "create_first_project": "Create your first project to get started.",
       "stats": {
-        "total": "Total",
+        "total": "Total Projects",
         "in_progress": "In Progress",
         "completed": "Completed",
         "planning": "Planning"
       }
     },
     "team": {
+      "badge": "Organization & Members",
       "title": "Team",
       "description": "Manage team members and their roles.",
       "invite_member": "Invite Member",
       "edit_member": "Edit Member",
       "member_details": "Member Details",
+      "member_profile_details": "Member profile details",
       "member_name": "Name",
       "member_email": "Email",
       "member_role": "Role",
@@ -446,6 +458,28 @@
       "invite_sent": "Invitation sent to {email}",
       "member_updated": "Member updated successfully",
       "member_removed": "{name} removed from team",
+      "search_placeholder": "Search members...",
+      "view_details": "View details",
+      "edit_role": "Edit role",
+      "remove": "Remove",
+      "email_copied": "Email copied",
+      "no_members_yet": "No team members yet. Invite someone to get started.",
+      "no_members_match": "No members match your search.",
+      "invite_title": "Invite a Member",
+      "invite_desc": "Send an invitation email to add someone to your workspace.",
+      "send_invitation": "Send Invitation",
+      "email_address": "Email address",
+      "email_placeholder": "colleague@company.com",
+      "role": "Role",
+      "edit_role_title": "Edit Role — {name}",
+      "edit_role_desc": "Change this member's access level in the workspace.",
+      "save_changes": "Save Changes",
+      "stats": {
+        "total_members": "Total Members",
+        "active_now": "Active Now",
+        "departments": "Departments",
+        "admins": "Admins"
+      },
       "roles": {
         "admin": "Admin",
         "member": "Member",
@@ -453,19 +487,61 @@
       }
     },
     "documents": {
-      "title": "Documents",
-      "description": "Manage files and documents in your workspace.",
-      "upload_document": "Upload Document",
-      "rename_document": "Rename Document",
-      "document_name": "Document Name",
-      "file_type": "File Type",
-      "file_size": "File Size",
+      "title": "Documents Library",
+      "description": "Access and manage shared files, assets, and reports across your workspace.",
+      "upload_document": "Upload File",
+      "rename_document": "Rename File",
+      "document_name": "File Name",
+      "file_type": "Type",
+      "file_size": "Size (optional)",
       "upload_date": "Upload Date",
-      "storage_used": "Storage Used",
-      "storage_limit": "Storage Limit",
+      "storage_workspace": "Workspace Storage",
+      "storage_used": "{used} GB / {total} GB used",
+      "storage_pct_used": "{pct}% Used",
+      "search_placeholder": "Search files...",
+      "export": "Export",
+      "view_details": "View details",
+      "download": "Download",
+      "rename": "Rename",
+      "delete": "Delete",
+      "no_files_yet": "No files yet. Upload your first file to get started.",
+      "no_files_match": "No files match your search.",
+      "upload_file_desc": "Add a new file to the document library.",
+      "add_file": "Add File",
+      "file_name_placeholder": "e.g. Q2 Report.pdf",
+      "file_size_placeholder": "e.g. 2.4 MB",
+      "file_details": "File details",
+      "last_modified": "Last Modified",
       "document_uploaded": "Document uploaded successfully",
       "document_renamed": "Document renamed successfully",
       "document_deleted": "Document deleted successfully"
+    },
+    "billing": {
+      "badge": "Subscription & Billing",
+      "title": "Plans & Pricing",
+      "description": "Choose the plan that best fits your team's size and workload.",
+      "available_plans": "Available Plans",
+      "invoices_history": "Invoices & Payment History",
+      "monthly": "Monthly",
+      "yearly": "Yearly (Save 20%)",
+      "popular_badge": "MOST POPULAR",
+      "per_month": "/month",
+      "per_year": "/year",
+      "current_plan": "Current Plan",
+      "upgrade": "Upgrade to {plan}",
+      "get_started": "Get Started",
+      "contact_sales": "Contact Sales",
+      "faq_title": "Frequently Asked Questions",
+      "faq_desc": "Everything you need to know about our billing and subscriptions."
+    },
+    "analytics": {
+      "badge": "Data & Performance",
+      "title": "Analytics & Insights",
+      "description": "Deep dive into your workspace metrics with high-precision charts and summaries.",
+      "platform_summary": "Platform Summary",
+      "total_projects": "Total Projects",
+      "total_members": "Total Members",
+      "total_documents": "Total Documents"
     },
     "notifications": {
       "title": "Notifications",
@@ -478,6 +554,20 @@
       "notification_dismissed": "Notification dismissed"
     },
     "admin": {
+      "badge": "Platform Administration",
+      "title": "Super Admin Console",
+      "description": "Cross-tenant infrastructure, compliance logs, and platform operations.",
+      "total_tenants": "Total Tenants",
+      "total_users": "Total Users",
+      "active_now": "Active Now",
+      "security_alerts": "Security Alerts",
+      "mrr": "MRR",
+      "regions": "Regions",
+      "recently_created_tenants": "Recently Created Tenants",
+      "members": "members",
+      "created": "Created",
+      "status_active": "Active",
+      "status_suspended": "Suspended",
       "users": {
         "title": "All Users",
         "description": "Manage users across all tenants.",

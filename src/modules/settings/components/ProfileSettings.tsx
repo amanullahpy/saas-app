@@ -142,27 +142,27 @@ export function ProfileSettings({ profile }: Props) {
     .slice(0, 2);
 
   return (
-    <Card className="border-none shadow-sm bg-card hover:shadow-md transition-shadow">
-      <CardHeader>
-        <CardTitle>{t("title")}</CardTitle>
-        <CardDescription>
+    <Card className="border border-border/80 shadow-sm hover:shadow-lg transition-all duration-300">
+      <CardHeader className="border-b border-border/40 pb-4 text-start">
+        <CardTitle className="text-xl font-heading text-foreground">{t("title")}</CardTitle>
+        <CardDescription className="text-sm leading-relaxed">
           {t("description")}
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="flex items-center gap-6 pb-6 border-b">
+      <CardContent className="space-y-6 pt-6">
+        <div className="flex items-center gap-6 pb-6 border-b border-border/40 text-start">
           <div className="relative">
-            <Avatar className="h-24 w-24 border-4 border-background shadow-sm">
+            <Avatar className="h-24 w-24 border-4 border-background shadow-md">
               <AvatarImage src={profile?.avatarUrl || profileData.defaultProfile.avatar || undefined} />
-              <AvatarFallback className="text-2xl bg-primary/10 text-primary">{initials}</AvatarFallback>
+              <AvatarFallback className="text-2xl bg-gradient-to-br from-[#0052FF] to-[#4D7CFF] text-white font-heading font-bold">{initials}</AvatarFallback>
             </Avatar>
-            <Button size="icon" variant="secondary" className="absolute bottom-0 right-0 rounded-full h-8 w-8 shadow-sm border border-background">
-              <Camera className="h-4 w-4" />
+            <Button size="icon" variant="gradient" className="absolute bottom-0 right-0 rounded-full h-8 w-8 shadow-accent border-2 border-background">
+              <Camera className="h-4 w-4 stroke-[2]" />
             </Button>
           </div>
           <div className="space-y-1">
-            <h3 className="font-semibold text-lg">{nameToUse}</h3>
-            <p className="text-sm text-muted-foreground capitalize">
+            <h3 className="font-heading font-bold text-xl text-foreground">{nameToUse}</h3>
+            <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
               {profile?.role || profileData.defaultProfile.role}
               {profileData.defaultProfile.location ? ` • ${profileData.defaultProfile.location}` : ""}
             </p>
@@ -170,14 +170,14 @@ export function ProfileSettings({ profile }: Props) {
         </div>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 text-start">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FormField
                 control={form.control}
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t("full_name")}</FormLabel>
+                    <FormLabel className="text-sm font-medium text-foreground">{t("full_name")}</FormLabel>
                     <FormControl>
                       <Input placeholder="Your name" className="h-11 px-4 rounded-xl" {...field} />
                     </FormControl>
@@ -190,7 +190,7 @@ export function ProfileSettings({ profile }: Props) {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t("email_address")}</FormLabel>
+                    <FormLabel className="text-sm font-medium text-foreground">{t("email_address")}</FormLabel>
                     <FormControl>
                       <Input placeholder="you@example.com" className="h-11 px-4 rounded-xl" {...field} />
                     </FormControl>
@@ -203,7 +203,7 @@ export function ProfileSettings({ profile }: Props) {
                 name="jobTitle"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t("job_title")}</FormLabel>
+                    <FormLabel className="text-sm font-medium text-foreground">{t("job_title")}</FormLabel>
                     <FormControl>
                       <Input placeholder="e.g. Product Designer" className="h-11 px-4 rounded-xl" {...field} />
                     </FormControl>
@@ -216,7 +216,7 @@ export function ProfileSettings({ profile }: Props) {
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t("phone")}</FormLabel>
+                    <FormLabel className="text-sm font-medium text-foreground">{t("phone")}</FormLabel>
                     <FormControl>
                       <Input placeholder="+1 (555) 000-0000" className="h-11 px-4 rounded-xl" {...field} />
                     </FormControl>
@@ -229,7 +229,7 @@ export function ProfileSettings({ profile }: Props) {
                 name="bio"
                 render={({ field }) => (
                   <FormItem className="md:col-span-2">
-                    <FormLabel>{t("bio")}</FormLabel>
+                    <FormLabel className="text-sm font-medium text-foreground">{t("bio")}</FormLabel>
                     <FormControl>
                       <Input placeholder="A short bio about yourself" className="h-11 px-4 rounded-xl" {...field} />
                     </FormControl>
@@ -239,7 +239,7 @@ export function ProfileSettings({ profile }: Props) {
               />
             </div>
             <div className="flex justify-end">
-              <Button type="submit" disabled={saving} className="h-11 px-8 rounded-xl">
+              <Button type="submit" disabled={saving} variant="gradient" size="xl" className="shadow-accent">
                 {saving ? "Saving..." : t("save_changes")}
               </Button>
             </div>
